@@ -1,0 +1,217 @@
+---
+import '../styles/landing.css';
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Breadcrumbs from '../components/Breadcrumbs.astro';
+import CtaButton from '../components/CtaButton.astro';
+import StickyBar from '../components/StickyBar.astro';
+
+const title = 'The Profit Goldeneye 2.0 for Swing Traders: Ride the Big Waves';
+const description =
+	'Goldeneye 2.0 for swing traders: read H4, daily, and weekly bias on one dashboard so daily noise is easier to ignore. $329 once for MT4 and MT5.';
+const canonicalURL = 'https://profitgoldeneyereview.com/profit-goldeneye-for-swing-traders';
+
+const checks = [
+	{ title: 'See the Daily and Weekly trend instantly', copy: 'D1 and W1 are cells on the panel. You do not open a second chart to remember the tide.' },
+	{ title: 'Avoid entering against the macro momentum', copy: 'If H4 is pretty and W1 is the other way, the dashboard shows the fight before you hold overnight.' },
+	{ title: 'Fewer, higher-quality trades', copy: 'STANDBY is a reason to do nothing. Swing trading is mostly waiting.' },
+];
+
+const faqs = [
+	{
+		q: 'Which timeframes should a swing trader watch?',
+		a: 'H4 for the setup, D1 for the swing, and W1 for the larger tide. MN is the backdrop. M1 and M5 are noise for a trade you plan to hold for days.',
+	},
+	{
+		q: 'Will this stop me getting shaken out?',
+		a: 'No indicator removes overnight gaps or a news spike. The panel can keep you from entering against the weekly cell. Your stop still has to survive normal daily noise. Size for that, or do not hold the trade.',
+	},
+	{
+		q: 'How often will I get a signal?',
+		a: 'Fewer than a scalper. EXCELLENT grades on H4 and D1 are not an all-day stream. That is the point. If you need constant alerts, this is the wrong style for the tool.',
+	},
+	{
+		q: 'Do I have to watch the screen all week?',
+		a: 'No. Arm the alert, then check the panel when it calls. You still decide whether the daily and weekly cells agree before you leave the trade on.',
+	},
+];
+
+const schema = {
+	'@context': 'https://schema.org',
+	'@type': 'FAQPage',
+	mainEntity: faqs.map((faq) => ({
+		'@type': 'Question',
+		name: faq.q,
+		acceptedAnswer: { '@type': 'Answer', text: faq.a },
+	})),
+};
+---
+
+<BaseLayout title={title} description={description} canonicalURL={canonicalURL} schema={schema}>
+	<div class="landing">
+		<section class="hero">
+			<div class="container crumbs">
+				<Breadcrumbs
+					items={[
+						{ label: 'Home', href: '/' },
+						{ label: 'For swing traders', href: '/profit-goldeneye-for-swing-traders' },
+					]}
+				/>
+			</div>
+			<div class="container hero-grid">
+				<div class="hero-copy">
+					<p class="kicker">H4, daily, and weekly</p>
+					<h1>Goldeneye 2.0 for Swing Traders: Catch the H4 & Daily Trends</h1>
+					<p class="lede">
+						A swing is a trade you can hold for days without living inside the one-minute chart. The hard
+						part is the entry, and not letting Tuesday’s noise talk you out of a weekly trend.
+					</p>
+					<CtaButton class="btn-lg">Get Goldeneye 2.0 for swing trades →</CtaButton>
+					<p class="crosslinks">
+						<a href="/">Read the <strong>Goldeneye 2.0 Review</strong> →</a>
+						<a href="/profit-goldeneye-pricing">See <strong>Pricing</strong> →</a>
+						<a href="/profit-goldeneye-bonus">Claim the <strong>Bonuses</strong> →</a>
+					</p>
+				</div>
+				<figure class="shot">
+					<img
+						src="/images/dashboard.webp"
+						width="1080"
+						height="1256"
+						alt="Goldeneye 2.0 dashboard with H4, daily, weekly, and monthly cells visible in one row"
+					/>
+					<figcaption>D1, W1, and MN are on the same row as the chart. Seller screenshot, illustrative values.</figcaption>
+				</figure>
+			</div>
+		</section>
+
+		<section class="band">
+			<div class="container narrow">
+				<h2>The swing trader's problem</h2>
+				<div class="problem">
+					<p>
+						Swing traders hold trades for days or weeks. The hardest part is entering at the right time and
+						not getting shaken out by daily noise.
+					</p>
+					<p class="highlight">
+						Most shakeouts start as a pretty H4 entry that was already fighting the weekly trend.
+					</p>
+				</div>
+				<div class="cta-row">
+					<CtaButton class="btn-lg">Check the weekly cell first →</CtaButton>
+				</div>
+			</div>
+		</section>
+
+		<section class="band band-alt">
+			<div class="container">
+				<h2>How Goldeneye shows the macro trend</h2>
+				<p class="section-lead">
+					Focus on H4, D1, and W1. The dashboard is there so you only take entries in the direction of the
+					larger move, and you can ignore M1 while the trade is on.
+				</p>
+				<div class="meters">
+					<article>
+						<span>H4</span>
+						<h3>The setup</h3>
+						<p>Where the swing entry is timed. Not where the whole trade idea should come from.</p>
+					</article>
+					<article>
+						<span>D1</span>
+						<h3>The swing</h3>
+						<p>The daily bias. If this cell disagrees with the entry, you are holding a fight.</p>
+					</article>
+					<article>
+						<span>W1</span>
+						<h3>The tide</h3>
+						<p>The weekly direction. This is the “big money” context the lower chart cannot invent.</p>
+					</article>
+				</div>
+				<div class="split">
+					<div>
+						<p>
+							SIGHT tells you the lean. FORCE tells you whether the higher-timeframe move still has
+							weight. PULSE tells you if that move is fresh or late. A late weekly push can still be the
+							wrong time to hold for another week.
+						</p>
+						<p>
+							Fewer signals is a feature. STANDBY on the daily chart is permission to wait. The panel
+							will not manage the overnight gap for you.
+						</p>
+						<div class="cta-row">
+							<CtaButton class="btn-lg">Get the H4 and daily panel →</CtaButton>
+						</div>
+					</div>
+					<figure class="shot">
+						<img
+							src="/images/triad.webp"
+							width="1060"
+							height="749"
+							alt="Goldeneye SIGHT, FORCE, and PULSE meters with an Excellent grade lamp"
+						/>
+						<figcaption>The same meters, read on the higher timeframes instead of M1.</figcaption>
+					</figure>
+				</div>
+			</div>
+		</section>
+
+		<section class="band">
+			<div class="container">
+				<h2>A swing checklist</h2>
+				<ul class="checks">
+					{
+						checks.map((item) => (
+							<li>
+								<svg viewBox="0 0 24 24" aria-hidden="true">
+									<path d="M5 12.5l4.2 4.2L19 7.2" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" />
+								</svg>
+								<div>
+									<strong>{item.title}</strong>
+									<p>{item.copy}</p>
+								</div>
+							</li>
+						))
+					}
+				</ul>
+				<div class="cta-row">
+					<CtaButton class="btn-lg">Get Goldeneye 2.0 for $329 →</CtaButton>
+				</div>
+			</div>
+		</section>
+
+		<section class="band band-alt" id="faq">
+			<div class="container narrow">
+				<h2>Swing questions</h2>
+				<div class="faq-list">
+					{
+						faqs.map((faq, index) => (
+							<details name="swing-faq" open={index === 0}>
+								<summary>{faq.q}</summary>
+								<p>{faq.a}</p>
+							</details>
+						))
+					}
+				</div>
+				<div class="cta-row">
+					<CtaButton class="btn-lg">Hold with the higher timeframe →</CtaButton>
+				</div>
+			</div>
+		</section>
+
+		<section class="band">
+			<div class="container final-card">
+				<h2>Trade the tide, not the noise</h2>
+				<p>
+					H4 can look perfect and still be the wrong way on the week. The row of cells is how you see that
+					before the trade is already overnight.
+				</p>
+				<CtaButton class="btn-lg">Get Goldeneye 2.0 for swing traders →</CtaButton>
+				<p class="crosslinks">
+					<a href="/">Full <strong>review</strong> →</a>
+					<a href="/profit-goldeneye-pricing"><strong>Pricing</strong> →</a>
+					<a href="/profit-goldeneye-bonus"><strong>Bonuses</strong> →</a>
+				</p>
+			</div>
+		</section>
+	</div>
+	<StickyBar />
+</BaseLayout>

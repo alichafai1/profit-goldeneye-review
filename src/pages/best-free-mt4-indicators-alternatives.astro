@@ -1,0 +1,208 @@
+---
+import '../styles/landing.css';
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Breadcrumbs from '../components/Breadcrumbs.astro';
+import CtaButton from '../components/CtaButton.astro';
+import StickyBar from '../components/StickyBar.astro';
+
+const title = 'Why Free MT4 Indicators Fail (And What to Use Instead)';
+const description =
+	'Free MT4 indicators are often old files, renamed moving averages, or arrows that repaint. Goldeneye 2.0 is $329 once for a 9-timeframe panel on MT4 and MT5. Test the no-repaint claim on demo.';
+const canonicalURL = 'https://profitgoldeneyereview.com/best-free-mt4-indicators-alternatives';
+
+const options = [
+	{
+		id: 'goldeneye',
+		place: 'Paid, on purpose',
+		name: 'Goldeneye 2.0',
+		top: true,
+		copy: 'A $329 panel: nine timeframes, SIGHT / FORCE / PULSE, and EXCELLENT, GOOD, or STANDBY. One avoided full-size loss can cover that invoice. It will not cover a loss you take anyway, and it will not refund a bad click.',
+	},
+	{
+		id: 'forum-files',
+		place: 'What “free” usually is',
+		name: 'Forum indicator packs',
+		top: false,
+		copy: 'Old .ex4 files, no author, no update. Some are a moving average with a new name. Some redraw the arrow after the candle closes. The download costs nothing. The trade does.',
+	},
+	{
+		id: 'built-ins',
+		place: 'Free and honest',
+		name: 'Built-in MT4 tools',
+		top: false,
+		copy: 'Moving averages, RSI, and Bollinger Bands are free because MetaQuotes ships them. They lag or shout on a fast chart, and they do not grade a setup. They also do not pretend to be something else.',
+	},
+];
+
+const checks = [
+	{ title: 'No-repaint claim, checked on your demo', copy: 'The creator says the signals stay put. Mark one, let candles close, and see. Do not skip this because a sales page said so.' },
+	{ title: '9-timeframe dashboard', copy: 'M1 through monthly on the chart, instead of a single renamed average.' },
+	{ title: 'Works on both MT4 and MT5', copy: 'Both files are in the $329 purchase. Install only the platform you trade.' },
+];
+
+const faqs = [
+	{
+		q: 'Are all free MT4 indicators scams?',
+		a: 'No. The built-in ones are fine tools with known limits. The problem is anonymous forum files: outdated, mislabeled, or coded to repaint so the history looks perfect.',
+	},
+	{
+		q: 'Does $329 mean the signals are true?',
+		a: 'No. Price is not accuracy. You are paying for a maintained panel with a grade and nine timeframes, not for a winning trade. Test it. Size it small.',
+	},
+	{
+		q: 'What does one bad trade have to do with the price?',
+		a: 'Only this: if a redrawn free arrow would have cost you more than $329, and the panel would have kept you out, the invoice is smaller than that mistake. If you were going to take the trade anyway, the panel did not pay for itself.',
+	},
+];
+
+const schema = {
+	'@context': 'https://schema.org',
+	'@graph': [
+		{
+			'@type': 'ItemList',
+			name: 'What to use instead of a random free MT4 indicator',
+			itemListOrder: 'https://schema.org/ItemListOrderAscending',
+			numberOfItems: options.length,
+			itemListElement: options.map((item, index) => ({
+				'@type': 'ListItem',
+				position: index + 1,
+				name: item.name,
+				url: `${canonicalURL}#${item.id}`,
+			})),
+		},
+		{
+			'@type': 'FAQPage',
+			mainEntity: faqs.map((faq) => ({
+				'@type': 'Question',
+				name: faq.q,
+				acceptedAnswer: { '@type': 'Answer', text: faq.a },
+			})),
+		},
+	],
+};
+---
+
+<BaseLayout title={title} description={description} canonicalURL={canonicalURL} schema={schema}>
+	<div class="landing">
+		<section class="hero">
+			<div class="container crumbs">
+				<Breadcrumbs
+					items={[
+						{ label: 'Home', href: '/' },
+						{ label: 'Free indicator alternatives', href: '/best-free-mt4-indicators-alternatives' },
+					]}
+				/>
+			</div>
+			<div class="container hero-grid">
+				<div class="hero-copy">
+					<p class="kicker">Free has a bill</p>
+					<h1>Why Free MT4 Indicators Fail (And What to Use Instead)</h1>
+					<p class="lede">
+						The file is free. The repaint, the lag, and the trade you took because the history looked clean
+						are not. That is the invoice nobody puts on the download page.
+					</p>
+					<CtaButton class="btn-lg">Replace the forum file →</CtaButton>
+					<p class="crosslinks">
+						<a href="/">Read the <strong>Goldeneye 2.0 Review</strong> →</a>
+						<a href="/profit-goldeneye-pricing">See <strong>Pricing</strong> →</a>
+						<a href="/profit-goldeneye-bonus">Claim the <strong>Bonuses</strong> →</a>
+					</p>
+				</div>
+				<figure class="shot">
+					<img
+						src="/images/dashboard.webp"
+						width="1080"
+						height="1256"
+						alt="Goldeneye 2.0 paid dashboard with nine timeframes and a graded signal"
+					/>
+					<figcaption>A named panel with a grade, not an anonymous .ex4 from a forum thread.</figcaption>
+				</figure>
+			</div>
+		</section>
+
+		<section class="band">
+			<div class="container narrow">
+				<h2>What the free download usually is</h2>
+				<div class="problem">
+					<p>
+						Forum indicators are often outdated, they repaint, or they are a moving average with a new
+						title. You get what you pay for, and sometimes you get a chart that lies about what you saw
+						live.
+					</p>
+				</div>
+				<div class="cta-row">
+					<CtaButton class="btn-lg">Stop installing unnamed files →</CtaButton>
+				</div>
+			</div>
+		</section>
+
+		<section class="band band-alt">
+			<div class="container">
+				<h2>What to use instead</h2>
+				<div class="rank-list">
+					{
+						options.map((item) => (
+							<article class:list={['rank', item.top && 'rank-top']} id={item.id}>
+								<p class="place">{item.place}</p>
+								<h3>{item.name}</h3>
+								<p>{item.copy}</p>
+							</article>
+						))
+					}
+				</div>
+				<div class="cta-row">
+					<CtaButton class="btn-lg">Get Goldeneye 2.0 for $329 →</CtaButton>
+				</div>
+			</div>
+		</section>
+
+		<section class="band">
+			<div class="container">
+				<h2>What you are actually buying</h2>
+				<ul class="checks">
+					{
+						checks.map((item) => (
+							<li>
+								<svg viewBox="0 0 24 24" aria-hidden="true">
+									<path d="M5 12.5l4.2 4.2L19 7.2" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" />
+								</svg>
+								<div>
+									<strong>{item.title}</strong>
+									<p>{item.copy}</p>
+								</div>
+							</li>
+						))
+					}
+				</ul>
+				<div class="cta-row">
+					<CtaButton class="btn-lg">Test it before you size it →</CtaButton>
+				</div>
+			</div>
+		</section>
+
+		<section class="band band-alt" id="faq">
+			<div class="container narrow">
+				<h2>Questions</h2>
+				<div class="faq-list">
+					{
+						faqs.map((faq, index) => (
+							<details name="free-faq" open={index === 0}>
+								<summary>{faq.q}</summary>
+								<p>{faq.a}</p>
+							</details>
+						))
+					}
+				</div>
+				<div class="cta-row">
+					<CtaButton class="btn-lg">Get the panel instead of another free file →</CtaButton>
+				</div>
+				<p class="crosslinks">
+					<a href="/">Full <strong>review</strong> →</a>
+					<a href="/profit-goldeneye-pricing"><strong>Pricing</strong> →</a>
+					<a href="/profit-goldeneye-bonus"><strong>Bonuses</strong> →</a>
+				</p>
+			</div>
+		</section>
+	</div>
+	<StickyBar />
+</BaseLayout>

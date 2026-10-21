@@ -1,0 +1,88 @@
+---
+import '../styles/legal.css';
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Breadcrumbs from '../components/Breadcrumbs.astro';
+
+const title = 'Privacy Policy';
+const description =
+	'How profitgoldeneyereview.com handles visits, cookies, and email. Contact contact@profitgoldeneyereview.com with a privacy question.';
+const canonicalURL = 'https://profitgoldeneyereview.com/privacy-policy';
+
+const faqs = [
+	{
+		q: 'Do you sell my information?',
+		a: 'No. We do not sell personal information. We also do not run customer accounts on this site.',
+	},
+	{
+		q: 'How do I reach you about privacy?',
+		a: 'Email contact@profitgoldeneyereview.com. Use a clear subject line so the message is not missed.',
+	},
+];
+
+const schema = {
+	'@context': 'https://schema.org',
+	'@type': 'FAQPage',
+	mainEntity: faqs.map((faq) => ({
+		'@type': 'Question',
+		name: faq.q,
+		acceptedAnswer: { '@type': 'Answer', text: faq.a },
+	})),
+};
+---
+
+<BaseLayout title={title} description={description} canonicalURL={canonicalURL} schema={schema}>
+	<article class="legal">
+		<div class="container legal-wrap">
+			<Breadcrumbs
+				items={[
+					{ label: 'Home', href: '/' },
+					{ label: 'Privacy Policy', href: '/privacy-policy' },
+				]}
+			/>
+			<h1>Privacy Policy</h1>
+			<p>This policy describes what profitgoldeneyereview.com does with information when you visit or write to us.</p>
+
+			<h2>What we collect</h2>
+			<p>
+				The site does not ask you to create an account. If you email us, we receive the address you wrote from,
+				what you sent, and we use that only to reply. We do not add that address to a sold list.
+			</p>
+			<p>
+				The host that serves the site may keep ordinary server logs, such as a browser type, the page
+				requested, and an IP address, so the site can run and so abuse can be blocked. Those logs are not a
+				marketing database.
+			</p>
+
+			<h2>Cookies and analytics</h2>
+			<p>
+				This site does not set its own advertising cookies and does not run a third-party analytics tag today.
+				Your browser may still store a basic session while a page loads. If that changes, this page will say
+				so before a tracker is added.
+			</p>
+			<p>
+				When you click a buy link, you leave this site for JVZoo or the seller. Their pages have their own
+				privacy rules. Read those before you enter a payment or an email address there.
+			</p>
+
+			<h2>Contact</h2>
+			<p>
+				Privacy questions go to <a href="mailto:contact@profitgoldeneyereview.com">contact@profitgoldeneyereview.com</a>.
+			</p>
+
+			<h2>Common questions</h2>
+			{
+				faqs.map((faq) => (
+					<>
+						<h2>{faq.q}</h2>
+						<p>{faq.a}</p>
+					</>
+				))
+			}
+			<p class="links">
+				<a href="/">Review</a>
+				<a href="/profit-goldeneye-pricing">Pricing</a>
+				<a href="/profit-goldeneye-bonus">Bonuses</a>
+			</p>
+		</div>
+	</article>
+</BaseLayout>

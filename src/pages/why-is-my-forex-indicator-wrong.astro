@@ -1,0 +1,181 @@
+---
+import '../styles/landing.css';
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Breadcrumbs from '../components/Breadcrumbs.astro';
+import CtaButton from '../components/CtaButton.astro';
+import StickyBar from '../components/StickyBar.astro';
+
+const title = 'Why Is My Forex Indicator Wrong? (The Repainting Truth)';
+const description =
+	'A forex indicator can look perfect in history and fail live because it repaints. Goldeneye 2.0 shows current SIGHT, FORCE, and PULSE instead of a prediction. Test it on a demo first.';
+const canonicalURL = 'https://profitgoldeneyereview.com/why-is-my-forex-indicator-wrong';
+
+const checks = [
+	{ title: 'See real-time momentum, not lagging signals', copy: 'SIGHT, FORCE, and PULSE describe the move that is happening, not a cross that already finished.' },
+	{ title: 'The Triad system shows the strength of the move', copy: 'Direction without weight is a drift. FORCE is the meter that separates the two.' },
+	{ title: 'Test it on a demo account first', copy: 'Mark a signal, let candles close, and see if the mark stays. Do that before you trust it with size.' },
+];
+
+const faqs = [
+	{
+		q: 'Why did my buy signal disappear?',
+		a: 'If the arrow was there while the candle was open and gone after it closed, the indicator repainted. It recalculated and rewrote the past so the history looks cleaner than the live chart you traded.',
+	},
+	{
+		q: 'Does Goldeneye 2.0 repaint?',
+		a: 'The creator claims it does not. This page does not treat that as proven. The panel is a current momentum read. Confirm it on a demo: if an EXCELLENT mark moves after the bar closes, it failed the test.',
+	},
+	{
+		q: 'Will a better indicator stop losing trades?',
+		a: 'No. A wrong indicator is one problem. Too much size is another. A clean signal can still lose. The fix for size is a stop and a small percent of the account, not a new arrow.',
+	},
+];
+
+const schema = {
+	'@context': 'https://schema.org',
+	'@type': 'FAQPage',
+	mainEntity: faqs.map((faq) => ({
+		'@type': 'Question',
+		name: faq.q,
+		acceptedAnswer: { '@type': 'Answer', text: faq.a },
+	})),
+};
+---
+
+<BaseLayout title={title} description={description} canonicalURL={canonicalURL} schema={schema}>
+	<div class="landing">
+		<section class="hero">
+			<div class="container crumbs">
+				<Breadcrumbs
+					items={[
+						{ label: 'Home', href: '/' },
+						{ label: 'Why indicators fail', href: '/why-is-my-forex-indicator-wrong' },
+					]}
+				/>
+			</div>
+			<div class="container hero-grid">
+				<div class="hero-copy">
+					<p class="kicker">Repainting</p>
+					<h1>Why Is My Forex Indicator Wrong? The Repainting Truth</h1>
+					<p class="lede">
+						The history chart looks brilliant. Live, the buy arrow was there, price fell, and the arrow is
+						gone. That is not a bad memory. The indicator changed the past.
+					</p>
+					<CtaButton class="btn-lg">See current momentum instead →</CtaButton>
+					<p class="crosslinks">
+						<a href="/">Read the <strong>Goldeneye 2.0 Review</strong> →</a>
+						<a href="/profit-goldeneye-pricing">See <strong>Pricing</strong> →</a>
+						<a href="/profit-goldeneye-bonus">Claim the <strong>Bonuses</strong> →</a>
+					</p>
+				</div>
+				<figure class="shot">
+					<img
+						src="/images/triad.webp"
+						width="1060"
+						height="749"
+						alt="Goldeneye SIGHT, FORCE, and PULSE meters showing the current state of a move"
+					/>
+					<figcaption>A current read. Meter values on the seller’s panel are illustrative.</figcaption>
+				</figure>
+			</div>
+		</section>
+
+		<section class="band">
+			<div class="container narrow">
+				<h2>What repainting actually is</h2>
+				<div class="problem">
+					<p>
+						An indicator shows a buy signal. Price goes down. You look back and the signal has disappeared.
+						The code ran again when the candle closed and deleted, or moved, the mark you traded.
+					</p>
+					<p class="highlight">
+						People say this is why most traders lose. The part you can prove on your own chart is smaller
+						and worse: you cannot trust a signal that will not sit still.
+					</p>
+				</div>
+				<div class="cta-row">
+					<CtaButton class="btn-lg">Stop trading arrows that vanish →</CtaButton>
+				</div>
+			</div>
+		</section>
+
+		<section class="band band-alt">
+			<div class="container">
+				<h2>A current momentum panel</h2>
+				<p class="section-lead">
+					Goldeneye 2.0 is not trying to guess the next candle and then hide the guess. SIGHT, FORCE, and
+					PULSE describe the market right now: direction, weight, and whether the session is even active.
+				</p>
+				<div class="meters">
+					<article>
+						<span>SIGHT</span>
+						<h3>Where it leans</h3>
+						<p>The side of the market in front of you, not a forecast of the close.</p>
+					</article>
+					<article>
+						<span>FORCE</span>
+						<h3>Whether it has weight</h3>
+						<p>A lean with no force is a drift. You do not need to trade a drift.</p>
+					</article>
+					<article>
+						<span>PULSE</span>
+						<h3>Whether it is alive</h3>
+						<p>A dead market can still print a direction. Pulse is the reason to wait.</p>
+					</article>
+				</div>
+				<div class="cta-row">
+					<CtaButton class="btn-lg">Get the SIGHT, FORCE, and PULSE panel →</CtaButton>
+				</div>
+			</div>
+		</section>
+
+		<section class="band">
+			<div class="container">
+				<h2>Before you trust the next signal</h2>
+				<ul class="checks">
+					{
+						checks.map((item) => (
+							<li>
+								<svg viewBox="0 0 24 24" aria-hidden="true">
+									<path d="M5 12.5l4.2 4.2L19 7.2" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" />
+								</svg>
+								<div>
+									<strong>{item.title}</strong>
+									<p>{item.copy}</p>
+								</div>
+							</li>
+						))
+					}
+				</ul>
+				<div class="cta-row">
+					<CtaButton class="btn-lg">Test Goldeneye 2.0 on a demo →</CtaButton>
+				</div>
+			</div>
+		</section>
+
+		<section class="band band-alt" id="faq">
+			<div class="container narrow">
+				<h2>Questions</h2>
+				<div class="faq-list">
+					{
+						faqs.map((faq, index) => (
+							<details name="wrong-faq" open={index === 0}>
+								<summary>{faq.q}</summary>
+								<p>{faq.a}</p>
+							</details>
+						))
+					}
+				</div>
+				<div class="cta-row">
+					<CtaButton class="btn-lg">Get Goldeneye 2.0 for $329 →</CtaButton>
+				</div>
+				<p class="crosslinks">
+					<a href="/">Full <strong>review</strong> →</a>
+					<a href="/profit-goldeneye-pricing"><strong>Pricing</strong> →</a>
+					<a href="/profit-goldeneye-bonus"><strong>Bonuses</strong> →</a>
+				</p>
+			</div>
+		</section>
+	</div>
+	<StickyBar />
+</BaseLayout>

@@ -1,0 +1,160 @@
+---
+import '../styles/landing.css';
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Breadcrumbs from '../components/Breadcrumbs.astro';
+import CtaButton from '../components/CtaButton.astro';
+import StickyBar from '../components/StickyBar.astro';
+
+const title = 'Goldeneye 2.0 vs. Market Cipher B: MT4 vs. Crypto';
+const description =
+	'Market Cipher B is a well-known TradingView tool used on crypto. Goldeneye 2.0 is a $329 one-time forex dashboard for MT4 and MT5. They are not the same job.';
+const canonicalURL = 'https://profitgoldeneyereview.com/goldeneye-vs-market-cipher-b';
+
+const rows = [
+	{ feature: 'Price', goldeneye: '$329 once', other: 'Paid TradingView script' },
+	{ feature: 'Market', goldeneye: 'Forex on MetaTrader', other: 'Mostly crypto' },
+	{ feature: 'Platform', goldeneye: 'MT4 and MT5', other: 'TradingView' },
+	{ feature: 'Grade', goldeneye: 'EXCELLENT, GOOD, STANDBY', other: 'Momentum waves and signals' },
+	{ feature: 'Repaint', goldeneye: 'Seller claims none. Test on demo.', other: 'Judge the script on closed candles' },
+];
+
+const faqs = [
+	{
+		q: 'Is Market Cipher B a forex indicator?',
+		a: 'It is famous as a crypto tool on TradingView. Some people put it on other markets. It is not an MT4 or MT5 forex dashboard, and it does not install into MetaTrader.',
+	},
+	{
+		q: 'Which one is for a forex account?',
+		a: 'Goldeneye, if the account is on MT4 or MT5. Market Cipher if you are charting crypto in TradingView and you already like that script. They answer different desks.',
+	},
+	{
+		q: 'Does Goldeneye repaint?',
+		a: 'The creator claims it does not. That is a claim, not a certificate. On a demo chart, mark an EXCELLENT signal and see if it is still there after the next candles close.',
+	},
+];
+
+const schema = {
+	'@context': 'https://schema.org',
+	'@type': 'FAQPage',
+	mainEntity: faqs.map((faq) => ({
+		'@type': 'Question',
+		name: faq.q,
+		acceptedAnswer: { '@type': 'Answer', text: faq.a },
+	})),
+};
+---
+
+<BaseLayout title={title} description={description} canonicalURL={canonicalURL} schema={schema}>
+	<div class="landing">
+		<section class="hero">
+			<div class="container crumbs">
+				<Breadcrumbs
+					items={[
+						{ label: 'Home', href: '/' },
+						{ label: 'Vs Market Cipher B', href: '/goldeneye-vs-market-cipher-b' },
+					]}
+				/>
+			</div>
+			<div class="container hero-plain">
+				<p class="kicker">Crypto script vs forex panel</p>
+				<h1>Goldeneye 2.0 vs. Market Cipher B</h1>
+				<p class="lede">
+					Market Cipher B is famous on crypto charts in TradingView. Goldeneye is built for forex on the
+					MT4 or MT5 platform where the ticket is.
+				</p>
+				<div class="verdict">
+					<p><strong>Quick verdict.</strong> Market Cipher is a crypto tool on TradingView. Goldeneye is the choice for forex traders who already work in MetaTrader.</p>
+				</div>
+				<CtaButton class="btn-lg">Get the forex panel →</CtaButton>
+				<p class="crosslinks">
+					<a href="/">Read the <strong>review</strong> →</a>
+					<a href="/profit-goldeneye-pricing"><strong>Pricing</strong> →</a>
+					<a href="/profit-goldeneye-bonus"><strong>Bonuses</strong> →</a>
+				</p>
+			</div>
+		</section>
+
+		<section class="band">
+			<div class="container">
+				<h2>Different market, different screen</h2>
+				<div class="table-scroll">
+					<table class="compare">
+						<caption>Goldeneye 2.0 compared with Market Cipher B</caption>
+						<thead>
+							<tr>
+								<th scope="col">Feature</th>
+								<th class="hl" scope="col">Goldeneye 2.0</th>
+								<th scope="col">Market Cipher B</th>
+							</tr>
+						</thead>
+						<tbody>
+							{
+								rows.map((row) => (
+									<tr>
+										<th scope="row">{row.feature}</th>
+										<td class="hl" data-label="Goldeneye 2.0">{row.goldeneye}</td>
+										<td data-label="Market Cipher B">{row.other}</td>
+									</tr>
+								))
+							}
+						</tbody>
+					</table>
+				</div>
+				<div class="cta-row">
+					<CtaButton class="btn-lg">Stay on MT4 for forex →</CtaButton>
+				</div>
+			</div>
+		</section>
+
+		<section class="band band-alt">
+			<div class="container narrow">
+				<h2>Where Goldeneye wins</h2>
+				<p>
+					It is made for forex on MetaTrader. The grade is a word, EXCELLENT, GOOD, or STANDBY, and the fee
+					is $329 once rather than another TradingView script bill.
+				</p>
+				<p>
+					The no-repaint line is the seller’s claim. It belongs in the “wins” column only after you have
+					watched a signal survive a few closed candles on demo. Until then it is a reason to test, not a
+					trophy.
+				</p>
+				<div class="cta-row">
+					<CtaButton class="btn-lg">Test Goldeneye on a forex demo →</CtaButton>
+				</div>
+			</div>
+		</section>
+
+		<section class="band" id="faq">
+			<div class="container narrow">
+				<h2>Questions</h2>
+				<div class="faq-list">
+					{
+						faqs.map((faq, index) => (
+							<details name="cipher-faq" open={index === 0}>
+								<summary>{faq.q}</summary>
+								<p>{faq.a}</p>
+							</details>
+						))
+					}
+				</div>
+				<div class="cta-row">
+					<CtaButton class="btn-lg">Get Goldeneye 2.0 for forex →</CtaButton>
+				</div>
+				<p class="crosslinks">
+					<a href="/">Full <strong>review</strong> →</a>
+					<a href="/profit-goldeneye-pricing"><strong>Pricing</strong> →</a>
+					<a href="/profit-goldeneye-bonus"><strong>Bonuses</strong> →</a>
+				</p>
+			</div>
+		</section>
+
+		<section class="band">
+			<div class="container final-card">
+				<h2>Do not mix the desks</h2>
+				<p>Crypto in a browser and forex in MetaTrader are two workflows. Pick the tool that lives on yours.</p>
+				<CtaButton class="btn-lg">Get Goldeneye 2.0 for $329 →</CtaButton>
+			</div>
+		</section>
+	</div>
+	<StickyBar />
+</BaseLayout>

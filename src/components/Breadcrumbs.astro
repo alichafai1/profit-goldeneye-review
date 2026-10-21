@@ -1,0 +1,83 @@
+---
+interface Crumb {
+	label: string;
+	href?: string;
+}
+
+interface Props {
+	items: Crumb[];
+}
+
+const { items } = Astro.props;
+const origin = Astro.site ?? new URL('https://profitgoldeneyereview.com');
+
+const schema = {
+	'@context': 'https://schema.org',
+	'@type': 'BreadcrumbList',
+	itemListElement: items.map((crumb, index) => ({
+		'@type': 'ListItem',
+		position: index + 1,
+		name: crumb.label,
+		item: new URL(crumb.href ?? Astro.url.pathname, origin).href,
+	})),
+};
+
+const schemaJson = JSON.stringify(schema).replace(/</g, '\\u003c');
+---
+
+<nav class="breadcrumbs" aria-label="Breadcrumb">
+	<ol>
+		{
+			items.map((crumb, index) => {
+				const isLast = index === items.length - 1;
+				return (
+					<li>
+						{crumb.href && !isLast ? (
+							<a href={crumb.href}>{crumb.label}</a>
+						) : (
+							<span aria-current={isLast ? 'page' : undefined}>{crumb.label}</span>
+						)}
+					</li>
+				);
+			})
+		}
+	</ol>
+</nav>
+<script type="application/ld+json" set:html={schemaJson} />
+
+<style>
+	.breadcrumbs ol {
+		display: flex;
+		flex-wrap: wrap;
+		gap: 0.45rem 0;
+		margin: 0;
+		padding: 0;
+		list-style: none;
+		color: var(--color-text-light);
+		font-size: 0.875rem;
+	}
+
+	.breadcrumbs li {
+		display: inline-flex;
+		align-items: center;
+	}
+
+	.breadcrumbs li:not(:last-child)::after {
+		content: '/';
+		margin-inline: 0.5rem;
+		color: var(--color-text-light);
+	}
+
+	.breadcrumbs a {
+		color: var(--color-text-light);
+		text-decoration: none;
+	}
+
+	.breadcrumbs a:hover {
+		color: var(--color-primary);
+	}
+
+	.breadcrumbs [aria-current='page'] {
+		color: var(--color-text);
+	}
+</style>

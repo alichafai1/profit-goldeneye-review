@@ -1,0 +1,168 @@
+---
+import '../styles/landing.css';
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Breadcrumbs from '../components/Breadcrumbs.astro';
+import CtaButton from '../components/CtaButton.astro';
+import StickyBar from '../components/StickyBar.astro';
+
+const title = 'How to Beat Forex Analysis Paralysis (The 9-Timeframe Solution)';
+const description =
+	'Analysis paralysis is checking M5 and H1 and freezing because they disagree. The Goldeneye 2.0 dashboard puts M1 through monthly on one row so confluence is visible.';
+const canonicalURL = 'https://profitgoldeneyereview.com/forex-analysis-paralysis';
+
+const checks = [
+	{ title: 'One dashboard, 9 timeframes', copy: 'M1, M5, M15, M30, H1, H4, D1, W1, and MN. No second chart required to see the ladder.' },
+	{ title: 'Clear graded signals (Excellent/Good/Standby)', copy: 'A rank is a decision. STANDBY is permission to do nothing.' },
+	{ title: 'No more chart switching', copy: 'The disagreement is on the row. You do not click through timeframes to discover it.' },
+];
+
+const faqs = [
+	{
+		q: 'What is forex analysis paralysis?',
+		a: 'You have more charts than decisions. M5 is up, H1 is down, and you wait until the move you were watching is over. The freeze is the loss, even if you never clicked.',
+	},
+	{
+		q: 'What is confluence here?',
+		a: 'The timeframes that match your holding time point the same way. For an intraday trade that might be M5, M15, and H1. If they do not agree, you do not have confluence. You have a conflict.',
+	},
+	{
+		q: 'Does the dashboard make the trade for me?',
+		a: 'No. It removes the hunt through ten charts. You still decide whether the grade is worth a stop and a small percent of the account.',
+	},
+];
+
+const schema = {
+	'@context': 'https://schema.org',
+	'@type': 'FAQPage',
+	mainEntity: faqs.map((faq) => ({
+		'@type': 'Question',
+		name: faq.q,
+		acceptedAnswer: { '@type': 'Answer', text: faq.a },
+	})),
+};
+---
+
+<BaseLayout title={title} description={description} canonicalURL={canonicalURL} schema={schema}>
+	<div class="landing">
+		<section class="hero">
+			<div class="container crumbs">
+				<Breadcrumbs
+					items={[
+						{ label: 'Home', href: '/' },
+						{ label: 'Analysis paralysis', href: '/forex-analysis-paralysis' },
+					]}
+				/>
+			</div>
+			<div class="container hero-grid">
+				<div class="hero-copy">
+					<p class="kicker">Nine timeframes, one look</p>
+					<h1>How to Beat Forex Analysis Paralysis</h1>
+					<p class="lede">
+						Ten charts open. M5 says up. H1 says down. You stare, you wait, and the only trade that
+						happens is the one you missed.
+					</p>
+					<CtaButton class="btn-lg">See the whole ladder at once →</CtaButton>
+					<p class="crosslinks">
+						<a href="/">Read the <strong>Goldeneye 2.0 Review</strong> →</a>
+						<a href="/profit-goldeneye-pricing">See <strong>Pricing</strong> →</a>
+						<a href="/profit-goldeneye-bonus">Claim the <strong>Bonuses</strong> →</a>
+					</p>
+				</div>
+				<figure class="shot">
+					<img
+						src="/images/dashboard.webp"
+						width="1080"
+						height="1256"
+						alt="Goldeneye 9-timeframe dashboard from M1 to monthly with the active cell highlighted"
+					/>
+					<figcaption>The top row is the cure for the chart hunt. Highlighted cell is the open chart.</figcaption>
+				</figure>
+			</div>
+		</section>
+
+		<section class="band">
+			<div class="container narrow">
+				<h2>The freeze</h2>
+				<div class="problem">
+					<p>
+						Analysis paralysis is real. You check M5, it's up. You check H1, it's down. You freeze and miss
+						the trade.
+					</p>
+					<p class="highlight">
+						More screens do not create agreement. They create a tie, and a tie feels safer than a click.
+					</p>
+				</div>
+				<div class="cta-row">
+					<CtaButton class="btn-lg">Stop opening another chart →</CtaButton>
+				</div>
+			</div>
+		</section>
+
+		<section class="band band-alt">
+			<div class="container narrow">
+				<h2>Confluence on one row</h2>
+				<p>
+					The Goldeneye 2.0 dashboard shows M1 to MN in one place. Confluence is when the timeframes that
+					belong to your trade agree. For a short trade, look at M5, M15, and H1. If they point together,
+					you have a direction. If they point apart, the dashboard already told you to wait.
+				</p>
+				<p>
+					EXCELLENT, GOOD, and STANDBY sit under that row. The grade is the second decision. Alignment
+					without a grade is still a guess. A grade without alignment is still a conflict.
+				</p>
+				<div class="cta-row">
+					<CtaButton class="btn-lg">Get the 9-timeframe dashboard →</CtaButton>
+				</div>
+			</div>
+		</section>
+
+		<section class="band">
+			<div class="container">
+				<h2>What replaces the ten charts</h2>
+				<ul class="checks">
+					{
+						checks.map((item) => (
+							<li>
+								<svg viewBox="0 0 24 24" aria-hidden="true">
+									<path d="M5 12.5l4.2 4.2L19 7.2" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" />
+								</svg>
+								<div>
+									<strong>{item.title}</strong>
+									<p>{item.copy}</p>
+								</div>
+							</li>
+						))
+					}
+				</ul>
+				<div class="cta-row">
+					<CtaButton class="btn-lg">Get Goldeneye 2.0 for $329 →</CtaButton>
+				</div>
+			</div>
+		</section>
+
+		<section class="band band-alt" id="faq">
+			<div class="container narrow">
+				<h2>Questions</h2>
+				<div class="faq-list">
+					{
+						faqs.map((faq, index) => (
+							<details name="paralysis-faq" open={index === 0}>
+								<summary>{faq.q}</summary>
+								<p>{faq.a}</p>
+							</details>
+						))
+					}
+				</div>
+				<div class="cta-row">
+					<CtaButton class="btn-lg">Trade when the row agrees →</CtaButton>
+				</div>
+				<p class="crosslinks">
+					<a href="/">Full <strong>review</strong> →</a>
+					<a href="/profit-goldeneye-pricing"><strong>Pricing</strong> →</a>
+					<a href="/profit-goldeneye-bonus"><strong>Bonuses</strong> →</a>
+				</p>
+			</div>
+		</section>
+	</div>
+	<StickyBar />
+</BaseLayout>

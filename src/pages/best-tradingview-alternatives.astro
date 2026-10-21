@@ -1,0 +1,207 @@
+---
+import '../styles/landing.css';
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Breadcrumbs from '../components/Breadcrumbs.astro';
+import CtaButton from '../components/CtaButton.astro';
+import StickyBar from '../components/StickyBar.astro';
+
+const title = 'Top 5 TradingView Alternatives for MT4/MT5 Traders (2026)';
+const description =
+	'TradingView is a strong charting site. If you execute on MT4 or MT5, these five alternatives keep the signal on the platform you already trade, with Goldeneye 2.0 first for context.';
+const canonicalURL = 'https://profitgoldeneyereview.com/best-tradingview-alternatives';
+
+const ranks = [
+	{
+		id: 'goldeneye',
+		place: '#1',
+		name: 'Goldeneye 2.0',
+		fit: 'Best for MT4/MT5 signal context',
+		top: true,
+		copy: 'Built for MetaTrader, not for a browser tab you have to translate into an order. The triad, the nine-timeframe row, and EXCELLENT / GOOD / STANDBY grades sit on the chart where you click. $329 once. It does not send the order for you.',
+	},
+	{
+		id: 'luxalgo',
+		place: '#2',
+		name: 'LuxAlgo',
+		fit: 'Best for TradingView charting',
+		top: false,
+		copy: 'A large TradingView script suite. Useful if your work stays in the browser and you like overlays, signals, and screener-style tools. You still copy the idea over to MetaTrader by hand.',
+	},
+	{
+		id: 'market-cipher',
+		place: '#3',
+		name: 'Market Cipher B',
+		fit: 'Best for crypto',
+		top: false,
+		copy: 'A well-known TradingView momentum overlay, used mostly on crypto. It is a different market and a different platform from an MT4 forex ticket. Do not treat it as a MetaTrader indicator.',
+	},
+	{
+		id: 'moving-averages',
+		place: '#4',
+		name: 'Standard MT4 moving averages',
+		fit: 'Best if free is mandatory',
+		top: false,
+		copy: 'Already on the platform. A cross is easy to see and costs nothing. It lags, and it will not tell you that M15 disagrees with H1.',
+	},
+	{
+		id: 'rsi',
+		place: '#5',
+		name: 'Built-in RSI',
+		fit: 'Best as a single oscillator',
+		top: false,
+		copy: 'Free on MT4 and MT5. Fine as a warning that price is stretched. On a fast chart it flips so often that both readings feel true. It is not a dashboard.',
+	},
+];
+
+const faqs = [
+	{
+		q: 'Is TradingView bad?',
+		a: 'No. It is a strong place to draw and to browse charts. The gap is execution. A signal in the browser still has to be placed on MetaTrader by you.',
+	},
+	{
+		q: 'Why is Goldeneye first for MT4 and MT5?',
+		a: 'Because it is installed on that platform. The nine timeframes, the triad, and the grade are on the same chart as the order ticket. LuxAlgo and Market Cipher B stay in TradingView.',
+	},
+	{
+		q: 'Do I have to code Pine Script?',
+		a: 'Not for Goldeneye. You paste the indicator into MT4 or MT5 and refresh the Navigator. Pine Script is a TradingView job.',
+	},
+];
+
+const schema = {
+	'@context': 'https://schema.org',
+	'@graph': [
+		{
+			'@type': 'ItemList',
+			name: 'TradingView alternatives for MT4 and MT5 traders',
+			itemListOrder: 'https://schema.org/ItemListOrderAscending',
+			numberOfItems: ranks.length,
+			itemListElement: ranks.map((rank, index) => ({
+				'@type': 'ListItem',
+				position: index + 1,
+				name: rank.name,
+				url: `${canonicalURL}#${rank.id}`,
+			})),
+		},
+		{
+			'@type': 'FAQPage',
+			mainEntity: faqs.map((faq) => ({
+				'@type': 'Question',
+				name: faq.q,
+				acceptedAnswer: { '@type': 'Answer', text: faq.a },
+			})),
+		},
+	],
+};
+---
+
+<BaseLayout title={title} description={description} canonicalURL={canonicalURL} schema={schema}>
+	<div class="landing">
+		<section class="hero">
+			<div class="container crumbs">
+				<Breadcrumbs
+					items={[
+						{ label: 'Home', href: '/' },
+						{ label: 'TradingView alternatives', href: '/best-tradingview-alternatives' },
+					]}
+				/>
+			</div>
+			<div class="container hero-grid">
+				<div class="hero-copy">
+					<p class="kicker">MT4 and MT5</p>
+					<h1>Best TradingView Alternatives for MT4/MT5 Users</h1>
+					<p class="lede">
+						TradingView is a good place to draw. It is a poor place to pretend the trade is done. The order
+						still lives on MetaTrader, and a browser signal does not cross that gap for you.
+					</p>
+					<CtaButton class="btn-lg">See how Goldeneye works on MT4 →</CtaButton>
+					<p class="crosslinks">
+						<a href="/">Read the <strong>Goldeneye 2.0 Review</strong> →</a>
+						<a href="/profit-goldeneye-pricing">See <strong>Pricing</strong> →</a>
+						<a href="/profit-goldeneye-bonus">Claim the <strong>Bonuses</strong> →</a>
+					</p>
+				</div>
+				<figure class="shot">
+					<img
+						src="/images/dashboard.webp"
+						width="1080"
+						height="1256"
+						alt="Goldeneye 2.0 dashboard running as an on-chart MetaTrader panel"
+					/>
+					<figcaption>The panel is on the trading chart, not in a separate browser tab.</figcaption>
+				</figure>
+			</div>
+		</section>
+
+		<section class="band">
+			<div class="container narrow">
+				<h2>The gap</h2>
+				<div class="problem">
+					<p>
+						TradingView asks you to write Pine Script, or to pay for a plan and a script that can run $50 or
+						more a month. Then you still type the trade into MetaTrader yourself.
+					</p>
+					<p class="highlight">Two screens. Two decisions. The second one is where the mistake usually is.</p>
+				</div>
+				<div class="cta-row">
+					<CtaButton class="btn-lg">Keep the signal on MetaTrader →</CtaButton>
+				</div>
+			</div>
+		</section>
+
+		<section class="band band-alt">
+			<div class="container">
+				<h2>Five ways traders leave the browser tab</h2>
+				<div class="rank-list">
+					{
+						ranks.map((rank) => (
+							<article class:list={['rank', rank.top && 'rank-top']} id={rank.id}>
+								<p class="place">{rank.place} · {rank.fit}</p>
+								<h3>{rank.name}</h3>
+								<p>{rank.copy}</p>
+								{rank.top && (
+									<div class="cta-row">
+										<CtaButton class="btn-lg">Get Goldeneye 2.0 on MT4 and MT5 →</CtaButton>
+									</div>
+								)}
+							</article>
+						))
+					}
+				</div>
+			</div>
+		</section>
+
+		<section class="band" id="faq">
+			<div class="container narrow">
+				<h2>Questions</h2>
+				<div class="faq-list">
+					{
+						faqs.map((faq, index) => (
+							<details name="tv-faq" open={index === 0}>
+								<summary>{faq.q}</summary>
+								<p>{faq.a}</p>
+							</details>
+						))
+					}
+				</div>
+				<div class="cta-row">
+					<CtaButton class="btn-lg">See how Goldeneye works on MT4 →</CtaButton>
+				</div>
+				<p class="crosslinks">
+					<a href="/">Full <strong>review</strong> →</a>
+					<a href="/profit-goldeneye-pricing"><strong>Pricing</strong> →</a>
+					<a href="/profit-goldeneye-bonus"><strong>Bonuses</strong> →</a>
+				</p>
+			</div>
+		</section>
+
+		<section class="band">
+			<div class="container final-card">
+				<h2>Chart there. Trade here.</h2>
+				<p>Use TradingView if you like drawing. Use a MetaTrader panel if the decision has to sit on the ticket.</p>
+				<CtaButton class="btn-lg">Get Goldeneye 2.0 for $329 →</CtaButton>
+			</div>
+		</section>
+	</div>
+	<StickyBar />
+</BaseLayout>

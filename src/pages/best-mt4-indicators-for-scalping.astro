@@ -1,0 +1,201 @@
+---
+import '../styles/article.css';
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Breadcrumbs from '../components/Breadcrumbs.astro';
+import CtaButton from '../components/CtaButton.astro';
+import StickyBar from '../components/StickyBar.astro';
+
+const title = 'Best MT4 Indicators for Scalping in 2026 (Top 5 Ranked)';
+const description =
+	'A 2026 ranking of MT4 scalping tools. Goldeneye 2.0 is first for M1 and M5 grades. Moving averages, RSI, Bollinger Bands, and tick volume follow, with the reasons they lag on a fast chart.';
+const canonicalURL = 'https://profitgoldeneyereview.com/best-mt4-indicators-for-scalping';
+
+const ranks = [
+	{
+		place: 'Rank #1',
+		name: 'The Profit Goldeneye 2.0',
+		id: 'goldeneye',
+		top: true,
+		copy: 'Scalping needs a read you can take in one glance. Goldeneye’s M1 and M5 cells sit next to the higher timeframes, and the SIGHT, FORCE, and PULSE meters grade the momentum instead of handing you another line to interpret. EXCELLENT, GOOD, and STANDBY cut the noise that freezes people on a one-minute chart. It is $329 once, it does not trade for you, and the non-repaint claim still belongs on a demo before you size up.',
+	},
+	{
+		place: 'Rank #2',
+		name: 'Moving averages',
+		id: 'moving-averages',
+		top: false,
+		copy: 'A fast and a slow average is the oldest scalp filter on MT4. It is free and everyone understands a cross. It also lags. On M1 the cross often prints after the push you wanted is already gone.',
+	},
+	{
+		place: 'Rank #3',
+		name: 'RSI',
+		id: 'rsi',
+		top: false,
+		copy: 'RSI is useful on a slower chart. On M1 it flips from overbought to oversold so often that both readings feel true. Scalpers end up arguing with the oscillator instead of taking the trade.',
+	},
+	{
+		place: 'Rank #4',
+		name: 'Bollinger Bands',
+		id: 'bollinger-bands',
+		top: false,
+		copy: 'Bands show when price is stretched. That is a location, not a grade. A touch of the band on M1 can be a reversal or the start of a run. The bands will not tell you which.',
+	},
+	{
+		place: 'Rank #5',
+		name: 'Tick volume',
+		id: 'tick-volume',
+		top: false,
+		copy: 'MT4 volume is tick volume, not exchange volume, and it is free. A spike can confirm that a move had participation. It does not say whether M5 and M15 agree, and it does not label the setup Excellent or Standby.',
+	},
+];
+
+const faqs = [
+	{
+		q: 'What is the best MT4 indicator for scalping in 2026?',
+		a: 'For a graded M1 and M5 read with the higher timeframes still on screen, this list puts The Profit Goldeneye 2.0 first. Moving averages, RSI, Bollinger Bands, and tick volume remain useful checks. None of them grade the setup.',
+	},
+	{
+		q: 'Can I scalp with RSI alone?',
+		a: 'You can, and many traders do. On a one-minute chart RSI is noisy. Treat 30 and 70 as a warning, not as an entry by themselves.',
+	},
+	{
+		q: 'Does Goldeneye replace moving averages?',
+		a: 'No. Averages still show the slope. Goldeneye is the panel that grades momentum and shows nine timeframes so you are not waiting for a lagging cross to decide.',
+	},
+	{
+		q: 'Is Goldeneye an automated scalping robot?',
+		a: 'No. It is an indicator. Alerts can call you to the chart. You still click the order.',
+	},
+];
+
+const schema = {
+	'@context': 'https://schema.org',
+	'@graph': [
+		{
+			'@type': 'ItemList',
+			name: 'Best MT4 indicators for scalping in 2026',
+			itemListOrder: 'https://schema.org/ItemListOrderAscending',
+			numberOfItems: ranks.length,
+			itemListElement: ranks.map((rank, index) => ({
+				'@type': 'ListItem',
+				position: index + 1,
+				name: rank.name,
+				url: `${canonicalURL}#${rank.id}`,
+			})),
+		},
+		{
+			'@type': 'FAQPage',
+			mainEntity: faqs.map((faq) => ({
+				'@type': 'Question',
+				name: faq.q,
+				acceptedAnswer: { '@type': 'Answer', text: faq.a },
+			})),
+		},
+	],
+};
+---
+
+<BaseLayout title={title} description={description} canonicalURL={canonicalURL} schema={schema}>
+	<div class="article-page">
+		<section class="hero">
+			<div class="container crumbs">
+				<Breadcrumbs
+					items={[
+						{ label: 'Home', href: '/' },
+						{ label: 'Best MT4 scalping indicators', href: '/best-mt4-indicators-for-scalping' },
+					]}
+				/>
+			</div>
+			<div class="container hero-copy">
+				<p class="kicker">2026 ranking</p>
+				<h1>Best MT4 Indicators for Scalping in 2026 (Top 5 Ranked)</h1>
+				<p class="lede">
+					Scalping requires speed and precision. The tools below are ranked by how little they make you think
+					once M1 is already moving.
+				</p>
+				<CtaButton class="btn-lg">Get the #1 scalping panel →</CtaButton>
+				<p class="crosslinks">
+					<a href="/">Read the <strong>Goldeneye 2.0 Review</strong> →</a>
+					<a href="/profit-goldeneye-pricing">See <strong>Goldeneye 2.0 Pricing</strong> →</a>
+					<a href="/profit-goldeneye-bonus">Claim the <strong>Exclusive Bonuses</strong> →</a>
+				</p>
+			</div>
+		</section>
+
+		<section class="band">
+			<div class="container">
+				<h2>The top 5</h2>
+				<p class="section-lead">
+					Moving averages lag. RSI is confusing on M1. Goldeneye grades the momentum and keeps the other
+					timeframes in view so you are not rebuilding the chart between ticks.
+				</p>
+				<div class="cta-row">
+					<CtaButton class="btn-lg">See why Goldeneye is ranked #1 →</CtaButton>
+				</div>
+				<div class="rank-list">
+					{
+						ranks.map((rank) => (
+							<article class:list={['rank', rank.top && 'rank-top']} id={rank.id}>
+								<p class="place">{rank.place}</p>
+								<h3>{rank.name}</h3>
+								<p>{rank.copy}</p>
+								{rank.top && (
+									<div class="cta-row">
+										<CtaButton class="btn-lg">Get Goldeneye 2.0 for M1 and M5 →</CtaButton>
+									</div>
+								)}
+							</article>
+						))
+					}
+				</div>
+				<div class="cta-row">
+					<CtaButton class="btn-lg">Skip the lagging tools →</CtaButton>
+				</div>
+			</div>
+		</section>
+
+		<section class="band band-alt">
+			<div class="container narrow">
+				<h2>Why rank #1 beats the free set</h2>
+				<p>
+					A moving-average cross tells you the average already turned. RSI on M1 shouts overbought during the
+					exact push a scalper wanted. Bollinger Bands mark a stretch without a grade. Tick volume only says
+					the tape got busy.
+				</p>
+				<p>
+					Goldeneye’s M1 and M5 signals sit inside the Triad. SIGHT, FORCE, and PULSE are the seller’s way of
+					splitting direction, strength, and timing. The dashboard is what stops the paralysis of opening
+					five charts to see if M15 agrees. Test the prints on a demo. Do not assume a grade is a filled
+					order.
+				</p>
+				<div class="cta-row">
+					<CtaButton class="btn-lg">Get Goldeneye 2.0 for $329 →</CtaButton>
+				</div>
+			</div>
+		</section>
+
+		<section class="band" id="faq">
+			<div class="container narrow">
+				<h2>Scalping questions</h2>
+				<div class="faq-list">
+					{
+						faqs.map((faq, index) => (
+							<details name="scalp-faq" open={index === 0}>
+								<summary>{faq.q}</summary>
+								<p>{faq.a}</p>
+							</details>
+						))
+					}
+				</div>
+				<div class="cta-row">
+					<CtaButton class="btn-lg">Get the #1 MT4 scalp tool →</CtaButton>
+				</div>
+				<p class="crosslinks">
+					<a href="/">Full <strong>review</strong> →</a>
+					<a href="/profit-goldeneye-pricing"><strong>Pricing</strong> →</a>
+					<a href="/profit-goldeneye-bonus"><strong>Bonuses</strong> →</a>
+				</p>
+			</div>
+		</section>
+	</div>
+	<StickyBar />
+</BaseLayout>

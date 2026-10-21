@@ -1,0 +1,100 @@
+---
+import '../styles/legal.css';
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Breadcrumbs from '../components/Breadcrumbs.astro';
+
+const title = 'Terms of Service';
+const description =
+	'Terms for using profitgoldeneyereview.com. Trading Forex carries a high level of risk. We are not financial advisors, and past performance is not indicative of future results.';
+const canonicalURL = 'https://profitgoldeneyereview.com/terms';
+
+const faqs = [
+	{
+		q: 'Are you a financial advisor?',
+		a: 'No. Nothing on this site is financial, investment, or trading advice. You decide whether to trade and how much to risk.',
+	},
+	{
+		q: 'Can I rely on past results?',
+		a: 'No. Past performance is not indicative of future results. A screenshot, a grade, or a review does not predict the next trade.',
+	},
+];
+
+const schema = {
+	'@context': 'https://schema.org',
+	'@type': 'FAQPage',
+	mainEntity: faqs.map((faq) => ({
+		'@type': 'Question',
+		name: faq.q,
+		acceptedAnswer: { '@type': 'Answer', text: faq.a },
+	})),
+};
+---
+
+<BaseLayout title={title} description={description} canonicalURL={canonicalURL} schema={schema}>
+	<article class="legal">
+		<div class="container legal-wrap">
+			<Breadcrumbs
+				items={[
+					{ label: 'Home', href: '/' },
+					{ label: 'Terms of Service', href: '/terms' },
+				]}
+			/>
+			<h1>Terms of Service</h1>
+			<p class="warn">
+				Trading Forex carries a high level of risk. Past performance is not indicative of future results. We
+				are not financial advisors.
+			</p>
+			<p>
+				These terms cover your use of profitgoldeneyereview.com. If you do not accept them, do not use the
+				site.
+			</p>
+
+			<h2>What this site is</h2>
+			<p>
+				The pages are reviews, explanations, and opinions about a trading indicator. They are not a signal
+				service, not a brokerage, and not a personal recommendation. You can lose some or all of the money you
+				trade. Only trade money you can afford to lose.
+			</p>
+
+			<h2>No guarantee</h2>
+			<p>
+				We do not guarantee profits, accuracy, or that a feature will behave the same way on your platform as
+				it does in a screenshot. Software changes. Markets change. You test anything you install, on a demo
+				account first.
+			</p>
+
+			<h2>Affiliate links</h2>
+			<p>
+				Buy buttons may be affiliate links. The separate affiliate disclosure explains that a commission may
+				be paid if you purchase. That disclosure is part of these terms.
+			</p>
+
+			<h2>Your responsibility</h2>
+			<p>
+				You are responsible for your orders, your broker, your stops, and your taxes. Nothing here creates a
+				client relationship or a duty to update a page after you have read it.
+			</p>
+
+			<h2>Contact</h2>
+			<p>
+				Questions about these terms: <a href="mailto:contact@profitgoldeneyereview.com">contact@profitgoldeneyereview.com</a>.
+			</p>
+
+			<h2>Common questions</h2>
+			{
+				faqs.map((faq) => (
+					<>
+						<h2>{faq.q}</h2>
+						<p>{faq.a}</p>
+					</>
+				))
+			}
+			<p class="links">
+				<a href="/">Review</a>
+				<a href="/profit-goldeneye-pricing">Pricing</a>
+				<a href="/profit-goldeneye-bonus">Bonuses</a>
+				<a href="/affiliate-disclosure">Affiliate Disclosure</a>
+			</p>
+		</div>
+	</article>
+</BaseLayout>

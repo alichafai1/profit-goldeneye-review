@@ -1,0 +1,175 @@
+---
+import '../styles/landing.css';
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Breadcrumbs from '../components/Breadcrumbs.astro';
+import CtaButton from '../components/CtaButton.astro';
+import StickyBar from '../components/StickyBar.astro';
+
+const title = 'How to Install an Indicator on MT4 & MT5 (Step-by-Step)';
+const description =
+	'Install any custom indicator on MetaTrader 4 or MetaTrader 5. Open the data folder, paste the file into Indicators, refresh the Navigator, then attach Goldeneye and enter the license key.';
+const canonicalURL = 'https://profitgoldeneyereview.com/how-to-install-mt4-mt5-indicator';
+
+const steps = [
+	{ n: '01', name: 'Download the file', text: 'After checkout, save the indicator file from the seller’s email. Goldeneye includes a file for MT4 and a file for MT5.' },
+	{ n: '02', name: 'Open the data folder', text: 'In MetaTrader, open the File menu and choose Open Data Folder. This is the folder the platform actually reads.' },
+	{ n: '03', name: 'Open the Indicators folder', text: 'For MT4 go to MQL4, then Indicators. For MT5 go to MQL5, then Indicators. Do not drop the file on the desktop shortcut.' },
+	{ n: '04', name: 'Paste the indicator', text: 'Copy the Goldeneye file into that Indicators folder. Leave the file name as the seller sent it.' },
+	{ n: '05', name: 'Refresh the Navigator', text: 'Back in MetaTrader, open the Navigator panel. Right-click Indicators and choose Refresh. If the name does not appear, close the platform and open it again.' },
+	{ n: '06', name: 'Attach it and enter the key', text: 'Drag Goldeneye onto a chart. When the panel asks for the license key, paste the key from the same email. The dashboard should then appear on that chart.' },
+];
+
+const faqs = [
+	{
+		q: 'Where is Open Data Folder?',
+		a: 'It is in the File menu at the top of MetaTrader 4 and MetaTrader 5. If you cannot see the menu, turn it on from the View menu.',
+	},
+	{
+		q: 'I pasted the file and nothing shows up.',
+		a: 'Confirm you used MQL4/Indicators on MT4 or MQL5/Indicators on MT5, then refresh the Navigator. Restart the platform if the list is still old.',
+	},
+	{
+		q: 'Do I install both MT4 and MT5?',
+		a: 'Only the platform you trade on. The $329 purchase includes both files so you can use either one.',
+	},
+	{
+		q: 'Is this financial advice?',
+		a: 'No. Installing a file does not tell you what to trade. You still choose every order.',
+	},
+];
+
+const schema = {
+	'@context': 'https://schema.org',
+	'@graph': [
+		{
+			'@type': 'HowTo',
+			name: 'How to install an indicator on MT4 and MT5',
+			description,
+			step: steps.map((step, index) => ({
+				'@type': 'HowToStep',
+				position: index + 1,
+				name: step.name,
+				text: step.text,
+			})),
+		},
+		{
+			'@type': 'FAQPage',
+			mainEntity: faqs.map((faq) => ({
+				'@type': 'Question',
+				name: faq.q,
+				acceptedAnswer: { '@type': 'Answer', text: faq.a },
+			})),
+		},
+	],
+};
+---
+
+<BaseLayout title={title} description={description} canonicalURL={canonicalURL} schema={schema}>
+	<div class="landing">
+		<section class="hero">
+			<div class="container crumbs">
+				<Breadcrumbs
+					items={[
+						{ label: 'Home', href: '/' },
+						{ label: 'Install MT4 and MT5', href: '/how-to-install-mt4-mt5-indicator' },
+					]}
+				/>
+			</div>
+			<div class="container hero-plain">
+				<p class="kicker">Beginner install</p>
+				<h1>How to Install an Indicator on MT4 & MT5 (Step-by-Step)</h1>
+				<p class="lede">
+					The same path works for almost any custom indicator. For Goldeneye, you paste the file, refresh
+					the Navigator, and enter the license key.
+				</p>
+				<CtaButton class="btn-lg">Get Goldeneye 2.0, then install it →</CtaButton>
+				<p class="crosslinks">
+					<a href="/">Read the <strong>review</strong> →</a>
+					<a href="/profit-goldeneye-pricing"><strong>Pricing</strong> →</a>
+					<a href="/profit-goldeneye-bonus"><strong>Bonuses</strong> →</a>
+				</p>
+			</div>
+		</section>
+
+		<section class="band">
+			<div class="container narrow">
+				<h2>The install, in order</h2>
+				<ol class="steps">
+					{
+						steps.map((step) => (
+							<li>
+								<span>{step.n}</span>
+								<div>
+									<h3>{step.name}</h3>
+									<p>{step.text}</p>
+								</div>
+							</li>
+						))
+					}
+				</ol>
+				<div class="cta-row">
+					<CtaButton class="btn-lg">Download Goldeneye 2.0 for $329 →</CtaButton>
+				</div>
+			</div>
+		</section>
+
+		<section class="band band-alt">
+			<div class="container narrow">
+				<h2>MT4 and MT5 are the same idea</h2>
+				<div class="meters">
+					<article>
+						<span>MT4</span>
+						<h3>MQL4 / Indicators</h3>
+						<p>File, Open Data Folder, then MQL4, then Indicators.</p>
+					</article>
+					<article>
+						<span>MT5</span>
+						<h3>MQL5 / Indicators</h3>
+						<p>Same menu. The folder name is MQL5, not MQL4.</p>
+					</article>
+					<article>
+						<span>Both</span>
+						<h3>Refresh, then drag</h3>
+						<p>Navigator, right-click Indicators, Refresh. Drag the name onto a chart.</p>
+					</article>
+				</div>
+				<div class="cta-row">
+					<CtaButton class="btn-lg">Get the MT4 and MT5 files →</CtaButton>
+				</div>
+			</div>
+		</section>
+
+		<section class="band" id="faq">
+			<div class="container narrow">
+				<h2>Install questions</h2>
+				<div class="faq-list">
+					{
+						faqs.map((faq, index) => (
+							<details name="install-faq" open={index === 0}>
+								<summary>{faq.q}</summary>
+								<p>{faq.a}</p>
+							</details>
+						))
+					}
+				</div>
+				<div class="cta-row">
+					<CtaButton class="btn-lg">Get Goldeneye 2.0 for $329 →</CtaButton>
+				</div>
+				<p class="crosslinks">
+					<a href="/">Full <strong>review</strong> →</a>
+					<a href="/profit-goldeneye-pricing"><strong>Pricing</strong> →</a>
+					<a href="/profit-goldeneye-bonus"><strong>Bonuses</strong> →</a>
+				</p>
+			</div>
+		</section>
+
+		<section class="band">
+			<div class="container final-card">
+				<h2>Paste, refresh, drag</h2>
+				<p>If the name is not in the Navigator, the file is in the wrong folder or the list has not refreshed.</p>
+				<CtaButton class="btn-lg">Install Goldeneye on your platform →</CtaButton>
+			</div>
+		</section>
+	</div>
+	<StickyBar />
+</BaseLayout>

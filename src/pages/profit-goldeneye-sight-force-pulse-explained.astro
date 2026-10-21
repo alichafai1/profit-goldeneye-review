@@ -1,0 +1,177 @@
+---
+import '../styles/landing.css';
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Breadcrumbs from '../components/Breadcrumbs.astro';
+import CtaButton from '../components/CtaButton.astro';
+import StickyBar from '../components/StickyBar.astro';
+
+const title = 'The Goldeneye Triad Explained: SIGHT, FORCE, and PULSE';
+const description =
+	'How to read the Goldeneye 2.0 triad. SIGHT is direction, FORCE is momentum, and PULSE is whether the market is active. Alignment is a filter, not a guaranteed trade.';
+const canonicalURL = 'https://profitgoldeneyereview.com/profit-goldeneye-sight-force-pulse-explained';
+
+const steps = [
+	{ n: '01', name: 'Read SIGHT', text: 'SIGHT is the immediate direction. Green, or an up reading, means the panel sees the market leaning higher. The opposite reading means it is leaning lower.' },
+	{ n: '02', name: 'Read FORCE', text: 'FORCE is the momentum behind that lean. A strong reading means the move has weight. A weak reading means it may be a drift that fades.' },
+	{ n: '03', name: 'Read PULSE', text: 'PULSE is timing. High means the market is active. Low means it is quiet, and a pretty direction can still be a dead session.' },
+	{ n: '04', name: 'Only then combine them', text: 'SIGHT up, FORCE strong, and PULSE high is the picture the seller treats as a top buy. The mirror of that is the top sell. If one meter disagrees, it is not that setup.' },
+];
+
+const faqs = [
+	{
+		q: 'What does a perfect buy look like on the triad?',
+		a: 'SIGHT pointing up, FORCE strong in that same direction, and PULSE high. That is agreement on direction, weight, and activity. It is the panel’s best buy picture, not a promise the next candle rises.',
+	},
+	{
+		q: 'What if SIGHT and FORCE agree but PULSE is low?',
+		a: 'The direction may be clear and still be a quiet market. Stand aside. A low pulse is the meter telling you the session is dead.',
+	},
+	{
+		q: 'Do the meters place the trade?',
+		a: 'No. They describe the current state of the move. You still choose the entry, the stop, and the size.',
+	},
+];
+
+const schema = {
+	'@context': 'https://schema.org',
+	'@graph': [
+		{
+			'@type': 'HowTo',
+			name: 'How to read the Goldeneye SIGHT, FORCE, and PULSE meters',
+			step: steps.map((step, index) => ({
+				'@type': 'HowToStep',
+				position: index + 1,
+				name: step.name,
+				text: step.text,
+			})),
+		},
+		{
+			'@type': 'FAQPage',
+			mainEntity: faqs.map((faq) => ({
+				'@type': 'Question',
+				name: faq.q,
+				acceptedAnswer: { '@type': 'Answer', text: faq.a },
+			})),
+		},
+	],
+};
+---
+
+<BaseLayout title={title} description={description} canonicalURL={canonicalURL} schema={schema}>
+	<div class="landing">
+		<section class="hero">
+			<div class="container crumbs">
+				<Breadcrumbs
+					items={[
+						{ label: 'Home', href: '/' },
+						{ label: 'SIGHT, FORCE, PULSE', href: '/profit-goldeneye-sight-force-pulse-explained' },
+					]}
+				/>
+			</div>
+			<div class="container hero-grid">
+				<div class="hero-copy">
+					<p class="kicker">The triad</p>
+					<h1>The Goldeneye Triad Explained: SIGHT, FORCE, and PULSE</h1>
+					<p class="lede">
+						Three meters, each 0 to 100. One says where price is leaning, one says whether that lean has
+						weight, and one says whether the market is even awake.
+					</p>
+					<CtaButton class="btn-lg">Get Goldeneye 2.0 for $329 →</CtaButton>
+					<p class="crosslinks">
+						<a href="/">Read the <strong>review</strong> →</a>
+						<a href="/profit-goldeneye-pricing"><strong>Pricing</strong> →</a>
+						<a href="/profit-goldeneye-bonus"><strong>Bonuses</strong> →</a>
+					</p>
+				</div>
+				<figure class="shot">
+					<img src="/images/triad.webp" width="1060" height="749" alt="Goldeneye SIGHT, FORCE, and PULSE meters with an Excellent grade" />
+					<figcaption>Seller panel. Meter values are illustrative.</figcaption>
+				</figure>
+			</div>
+		</section>
+
+		<section class="band">
+			<div class="container">
+				<div class="meters">
+					<article>
+						<span>SIGHT</span>
+						<h3>Direction</h3>
+						<p>The immediate lean. This is the side of the market the panel wants you looking at.</p>
+					</article>
+					<article>
+						<span>FORCE</span>
+						<h3>Momentum</h3>
+						<p>The weight behind the move. Strong force is a push. Weak force is a drift.</p>
+					</article>
+					<article>
+						<span>PULSE</span>
+						<h3>Timing</h3>
+						<p>Active or dead. A high pulse means the market is moving. A low pulse means it is quiet.</p>
+					</article>
+				</div>
+				<div class="cta-row">
+					<CtaButton class="btn-lg">Put the triad on your chart →</CtaButton>
+				</div>
+			</div>
+		</section>
+
+		<section class="band band-alt">
+			<div class="container narrow">
+				<h2>How to read them together</h2>
+				<p class="highlight">
+					SIGHT up + FORCE strong + PULSE high is the panel’s picture of a top buy. Flip all three and it is
+					the picture of a top sell.
+				</p>
+				<ol class="steps">
+					{
+						steps.map((step) => (
+							<li>
+								<span>{step.n}</span>
+								<div>
+									<h3>{step.name}</h3>
+									<p>{step.text}</p>
+								</div>
+							</li>
+						))
+					}
+				</ol>
+				<div class="cta-row">
+					<CtaButton class="btn-lg">Get Goldeneye 2.0 for $329 →</CtaButton>
+				</div>
+			</div>
+		</section>
+
+		<section class="band" id="faq">
+			<div class="container narrow">
+				<h2>Triad questions</h2>
+				<div class="faq-list">
+					{
+						faqs.map((faq, index) => (
+							<details name="triad-faq" open={index === 0}>
+								<summary>{faq.q}</summary>
+								<p>{faq.a}</p>
+							</details>
+						))
+					}
+				</div>
+				<div class="cta-row">
+					<CtaButton class="btn-lg">See the meters live →</CtaButton>
+				</div>
+				<p class="crosslinks">
+					<a href="/">Full <strong>review</strong> →</a>
+					<a href="/profit-goldeneye-pricing"><strong>Pricing</strong> →</a>
+					<a href="/profit-goldeneye-bonus"><strong>Bonuses</strong> →</a>
+				</p>
+			</div>
+		</section>
+
+		<section class="band">
+			<div class="container final-card">
+				<h2>Agreement is the filter</h2>
+				<p>One green meter is not a trade. Wait until direction, weight, and activity say the same thing.</p>
+				<CtaButton class="btn-lg">Get the SIGHT, FORCE, and PULSE panel →</CtaButton>
+			</div>
+		</section>
+	</div>
+	<StickyBar />
+</BaseLayout>

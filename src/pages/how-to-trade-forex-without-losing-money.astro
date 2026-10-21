@@ -1,0 +1,161 @@
+---
+import '../styles/landing.css';
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Breadcrumbs from '../components/Breadcrumbs.astro';
+import CtaButton from '../components/CtaButton.astro';
+import StickyBar from '../components/StickyBar.astro';
+
+const title = 'How to Trade Forex Without Losing Money (The Risk Management Secret)';
+const description =
+	'You cannot remove losing forex trades. You can stop one loss from ending the account: risk 1%, set the stop first, and size the lot to that stop. Goldeneye finds the idea. The calculator sizes it.';
+const canonicalURL = 'https://profitgoldeneyereview.com/how-to-trade-forex-without-losing-money';
+
+const checks = [
+	{ title: 'Never risk more than 1–2% per trade', copy: 'One percent on $10,000 is $100. Two percent is the ceiling, not the goal.' },
+	{ title: 'Use a risk calculator for every trade', copy: 'Cash at risk divided by the distance to the stop. The bonus spreadsheet does that arithmetic.' },
+	{ title: 'Trade with the macro trend (Goldeneye shows it)', copy: 'D1 and W1 are on the same dashboard. Do not hold a fight against the weekly cell.' },
+];
+
+const faqs = [
+	{
+		q: 'Can you trade forex without losing money?',
+		a: 'No. You will have losing trades. The useful version of that question is how to lose small. Risk a slice of the account, define the stop before entry, and skip the trade when the size does not fit.',
+	},
+	{
+		q: 'What actually blows the account?',
+		a: 'Size. Risking 10% so three losses change the account. No stop, so one idea becomes a hole. A new indicator does not fix either habit.',
+	},
+	{
+		q: 'Where does Goldeneye fit?',
+		a: 'It helps you find a graded idea and see the higher-timeframe direction. The risk calculator bonus is what turns your percent and your stop into a lot size. You still have to use the number it gives you.',
+	},
+];
+
+const schema = {
+	'@context': 'https://schema.org',
+	'@type': 'FAQPage',
+	mainEntity: faqs.map((faq) => ({
+		'@type': 'Question',
+		name: faq.q,
+		acceptedAnswer: { '@type': 'Answer', text: faq.a },
+	})),
+};
+---
+
+<BaseLayout title={title} description={description} canonicalURL={canonicalURL} schema={schema}>
+	<div class="landing">
+		<section class="hero">
+			<div class="container crumbs">
+				<Breadcrumbs
+					items={[
+						{ label: 'Home', href: '/' },
+						{ label: 'Risk', href: '/how-to-trade-forex-without-losing-money' },
+					]}
+				/>
+			</div>
+			<div class="container hero-plain">
+				<p class="kicker">Stay in the game</p>
+				<h1>How to Trade Forex Without Losing Money (The Risk Management Secret)</h1>
+				<p class="lede">
+					Accounts die from size, not from a missing arrow. Traders talk about a small group that survives.
+					That group still loses trades. They just refuse to let one loss be the whole account.
+				</p>
+				<CtaButton class="btn-lg">Get Goldeneye 2.0 + the risk calculator →</CtaButton>
+				<p class="crosslinks">
+					<a href="/">Read the <strong>Goldeneye 2.0 Review</strong> →</a>
+					<a href="/profit-goldeneye-pricing">See <strong>Pricing</strong> →</a>
+					<a href="/profit-goldeneye-bonus">Claim the <strong>Bonuses</strong> →</a>
+				</p>
+			</div>
+		</section>
+
+		<section class="band">
+			<div class="container narrow">
+				<h2>It is not the indicator</h2>
+				<div class="problem">
+					<p>
+						It's not the indicator that blows your account. It's poor risk management. Risking 10% a trade,
+						or clicking with no stop, will empty an account that had a decent idea.
+					</p>
+					<p class="highlight">
+						Three losses at 10% are not a learning curve. They are a different account.
+					</p>
+				</div>
+				<div class="cta-row">
+					<CtaButton class="btn-lg">Size the trade before you take it →</CtaButton>
+				</div>
+			</div>
+		</section>
+
+		<section class="band band-alt">
+			<div class="container narrow">
+				<h2>The 1% rule, then the tool</h2>
+				<p>
+					Risk 1% of the account on one trade. On $10,000 that is $100. Put the stop where the idea is wrong.
+					The lot size is that $100 divided by the distance to the stop. A wide stop means a smaller
+					position. If you cannot name the stop, you cannot take the trade.
+				</p>
+				<p>
+					Goldeneye 2.0 helps you find the trade and see the higher-timeframe direction. The risk calculator
+					bonus is what protects you: account size and risk percent in, lot size out. The spreadsheet does
+					not click the order. You do, at the size it prints.
+				</p>
+				<div class="cta-row">
+					<CtaButton class="btn-lg">
+						Want to calculate your lot size automatically? Get Goldeneye 2.0 + My Risk Calculator Bonus →
+					</CtaButton>
+				</div>
+			</div>
+		</section>
+
+		<section class="band">
+			<div class="container">
+				<h2>The survival checklist</h2>
+				<ul class="checks">
+					{
+						checks.map((item) => (
+							<li>
+								<svg viewBox="0 0 24 24" aria-hidden="true">
+									<path d="M5 12.5l4.2 4.2L19 7.2" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" />
+								</svg>
+								<div>
+									<strong>{item.title}</strong>
+									<p>{item.copy}</p>
+								</div>
+							</li>
+						))
+					}
+				</ul>
+				<div class="cta-row">
+					<CtaButton class="btn-lg">Find the idea, then protect it →</CtaButton>
+				</div>
+			</div>
+		</section>
+
+		<section class="band band-alt" id="faq">
+			<div class="container narrow">
+				<h2>Questions</h2>
+				<div class="faq-list">
+					{
+						faqs.map((faq, index) => (
+							<details name="lose-faq" open={index === 0}>
+								<summary>{faq.q}</summary>
+								<p>{faq.a}</p>
+							</details>
+						))
+					}
+				</div>
+				<div class="cta-row">
+					<CtaButton class="btn-lg">Get Goldeneye 2.0 for $329 →</CtaButton>
+				</div>
+				<p class="crosslinks">
+					<a href="/">Full <strong>review</strong> →</a>
+					<a href="/profit-goldeneye-pricing"><strong>Pricing</strong> →</a>
+					<a href="/profit-goldeneye-bonus"><strong>Bonuses</strong> →</a>
+					<a href="/forex-risk-management-guide">The longer <strong>risk guide</strong> →</a>
+				</p>
+			</div>
+		</section>
+	</div>
+	<StickyBar />
+</BaseLayout>

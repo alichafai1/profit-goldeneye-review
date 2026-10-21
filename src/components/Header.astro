@@ -1,0 +1,173 @@
+---
+import Logo from './Logo.astro';
+import { offerRel, offerUrl } from '../data/offer';
+
+const links = [
+	{ href: '/#review', label: 'Review' },
+	{ href: '/profit-goldeneye-pricing', label: 'Pricing' },
+	{ href: '/#features', label: 'Features' },
+	{ href: '/#alternatives', label: 'Alternatives' },
+	{ href: '/profit-goldeneye-bonus', label: 'Bonuses' },
+];
+
+const path = Astro.url.pathname.replace(/\/$/, '') || '/';
+const isLegal = ['/affiliate-disclosure', '/privacy-policy', '/terms'].includes(path);
+---
+
+<header class="site-header">
+	<div class="container bar">
+		<Logo />
+		<input class="nav-toggle" id="nav-toggle" type="checkbox" aria-label="Open menu" />
+		<label class="menu-btn" for="nav-toggle" aria-label="Menu">
+			<span></span>
+			<span></span>
+			<span></span>
+		</label>
+		<nav class="nav" aria-label="Primary">
+			{
+				links.map((link) => (
+					<a href={link.href}>{link.label}</a>
+				))
+			}
+			{
+				!isLegal && (
+					<a class="btn nav-cta" href={offerUrl} target="_blank" rel={offerRel}>
+						Get Goldeneye 2.0 →
+					</a>
+				)
+			}
+		</nav>
+		{
+			!isLegal && (
+				<a class="btn header-cta" href={offerUrl} target="_blank" rel={offerRel}>
+					Get Goldeneye 2.0 →
+				</a>
+			)
+		}
+	</div>
+</header>
+
+<style>
+	.site-header {
+		position: sticky;
+		top: 0;
+		z-index: 30;
+		background: var(--color-bg);
+		border-bottom: 1px solid var(--color-border);
+	}
+
+	.bar {
+		display: flex;
+		align-items: center;
+		gap: 1rem;
+		min-height: 4.75rem;
+	}
+
+	.nav-toggle {
+		position: absolute;
+		width: 1px;
+		height: 1px;
+		margin: 0;
+		opacity: 0;
+	}
+
+	@media (min-width: 901px) {
+		.nav-toggle {
+			display: none;
+		}
+	}
+
+	.menu-btn {
+		display: none;
+	}
+
+	.nav {
+		display: flex;
+		align-items: center;
+		gap: 1.35rem;
+		margin-left: auto;
+	}
+
+	.nav a:not(.btn) {
+		color: var(--color-text-light);
+		font-size: 0.95rem;
+		font-weight: 500;
+		text-decoration: none;
+	}
+
+	.nav a:not(.btn):hover {
+		color: var(--color-primary);
+	}
+
+	.nav-cta {
+		display: none;
+	}
+
+	.header-cta {
+		flex: none;
+	}
+
+	@media (max-width: 900px) {
+		.bar {
+			flex-wrap: wrap;
+			padding-block: 0.85rem;
+		}
+
+		.menu-btn {
+			display: inline-grid;
+			gap: 5px;
+			margin-left: auto;
+			padding: 0.7rem;
+			cursor: pointer;
+		}
+
+		.menu-btn span {
+			display: block;
+			width: 1.25rem;
+			height: 2px;
+			background: var(--color-text);
+			border-radius: 999px;
+			transition: transform 160ms ease, opacity 160ms ease;
+		}
+
+		.nav-toggle:focus-visible + .menu-btn {
+			outline: 2px solid var(--color-primary);
+			outline-offset: 3px;
+		}
+
+		.nav-toggle:checked + .menu-btn span:nth-child(1) {
+			transform: translateY(7px) rotate(45deg);
+		}
+
+		.nav-toggle:checked + .menu-btn span:nth-child(2) {
+			opacity: 0;
+		}
+
+		.nav-toggle:checked + .menu-btn span:nth-child(3) {
+			transform: translateY(-7px) rotate(-45deg);
+		}
+
+		.nav {
+			display: none;
+			flex-basis: 100%;
+			flex-direction: column;
+			align-items: flex-start;
+			gap: 0.85rem;
+			margin-left: 0;
+			padding: 0.35rem 0 0.5rem;
+		}
+
+		.nav-toggle:checked ~ .nav {
+			display: flex;
+		}
+
+		.header-cta {
+			display: none;
+		}
+
+		.nav-cta {
+			display: inline-flex;
+			margin-top: 0.35rem;
+		}
+	}
+</style>

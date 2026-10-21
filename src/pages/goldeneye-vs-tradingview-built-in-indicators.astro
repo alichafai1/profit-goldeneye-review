@@ -1,0 +1,166 @@
+---
+import '../styles/landing.css';
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Breadcrumbs from '../components/Breadcrumbs.astro';
+import CtaButton from '../components/CtaButton.astro';
+import StickyBar from '../components/StickyBar.astro';
+
+const title = 'Goldeneye 2.0 vs. Standard TradingView Indicators (RSI & MACD)';
+const description =
+	'RSI and MACD are free and they lag. Goldeneye 2.0 puts nine timeframes and a grade on one MT4 or MT5 panel so you are not guessing from a single oscillator.';
+const canonicalURL = 'https://profitgoldeneyereview.com/goldeneye-vs-tradingview-built-in-indicators';
+
+const rows = [
+	{ feature: 'What you see', goldeneye: 'Dashboard and a grade', other: 'One oscillator line' },
+	{ feature: 'Timeframes', goldeneye: 'Nine on the same chart', other: 'Whichever chart you opened' },
+	{ feature: 'Signal', goldeneye: 'EXCELLENT, GOOD, STANDBY', other: 'You interpret the cross' },
+	{ feature: 'Lag', goldeneye: 'Current SIGHT, FORCE, PULSE', other: 'RSI and MACD follow price' },
+	{ feature: 'Price', goldeneye: '$329 once', other: 'Free on TradingView and MetaTrader' },
+	{ feature: 'Decision', goldeneye: 'Confluence is on the row', other: 'You still open more charts' },
+];
+
+const faqs = [
+	{
+		q: 'Should I delete RSI and MACD?',
+		a: 'No. They are useful for learning what stretched and what already crossed. They are a poor only-tool if you freeze when the one-minute RSI and the one-hour MACD disagree.',
+	},
+	{
+		q: 'Do free indicators show confluence?',
+		a: 'Not by themselves. You build confluence by opening several charts. Goldeneye prints M1 through monthly on one row so the disagreement is visible without the extra windows.',
+	},
+	{
+		q: 'Is Goldeneye just a prettier MACD?',
+		a: 'No. MACD is one calculation on one chart. Goldeneye is a panel: three meters, nine timeframes, and a grade. You still decide the trade.',
+	},
+];
+
+const schema = {
+	'@context': 'https://schema.org',
+	'@type': 'FAQPage',
+	mainEntity: faqs.map((faq) => ({
+		'@type': 'Question',
+		name: faq.q,
+		acceptedAnswer: { '@type': 'Answer', text: faq.a },
+	})),
+};
+---
+
+<BaseLayout title={title} description={description} canonicalURL={canonicalURL} schema={schema}>
+	<div class="landing">
+		<section class="hero">
+			<div class="container crumbs">
+				<Breadcrumbs
+					items={[
+						{ label: 'Home', href: '/' },
+						{ label: 'Vs RSI and MACD', href: '/goldeneye-vs-tradingview-built-in-indicators' },
+					]}
+				/>
+			</div>
+			<div class="container hero-plain">
+				<p class="kicker">Free oscillators</p>
+				<h1>Goldeneye 2.0 vs. Free Indicators (RSI & MACD)</h1>
+				<p class="lede">
+					RSI and MACD are free, and they follow price. They do not show whether M15, H1, and H4 agree, so
+					the confluence work is still yours.
+				</p>
+				<div class="verdict">
+					<p><strong>Quick verdict.</strong> Free indicators are good for learning. If you want one dashboard of the market’s momentum instead of guessing from a single line, Goldeneye is the upgrade.</p>
+				</div>
+				<CtaButton class="btn-lg">Upgrade from a single oscillator →</CtaButton>
+				<p class="crosslinks">
+					<a href="/">Read the <strong>review</strong> →</a>
+					<a href="/profit-goldeneye-pricing"><strong>Pricing</strong> →</a>
+					<a href="/profit-goldeneye-bonus"><strong>Bonuses</strong> →</a>
+				</p>
+			</div>
+		</section>
+
+		<section class="band">
+			<div class="container">
+				<h2>One line versus the row</h2>
+				<div class="table-scroll">
+					<table class="compare">
+						<caption>Goldeneye 2.0 compared with RSI and MACD</caption>
+						<thead>
+							<tr>
+								<th scope="col">Feature</th>
+								<th class="hl" scope="col">Goldeneye 2.0</th>
+								<th scope="col">RSI and MACD</th>
+							</tr>
+						</thead>
+						<tbody>
+							{
+								rows.map((row) => (
+									<tr>
+										<th scope="row">{row.feature}</th>
+										<td class="hl" data-label="Goldeneye 2.0">{row.goldeneye}</td>
+										<td data-label="RSI and MACD">{row.other}</td>
+									</tr>
+								))
+							}
+						</tbody>
+					</table>
+				</div>
+				<div class="cta-row">
+					<CtaButton class="btn-lg">See nine timeframes instead of one line →</CtaButton>
+				</div>
+			</div>
+		</section>
+
+		<section class="band band-alt">
+			<div class="container narrow">
+				<h2>Where Goldeneye wins</h2>
+				<ul class="checks">
+					<li>
+						<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12.5l4.2 4.2L19 7.2" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" /></svg>
+						<div><strong>Multi-timeframe view</strong><p>M1 through monthly without opening another chart.</p></div>
+					</li>
+					<li>
+						<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12.5l4.2 4.2L19 7.2" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" /></svg>
+						<div><strong>Graded signals</strong><p>EXCELLENT, GOOD, or STANDBY. A cross still needs you to decide what it means.</p></div>
+					</li>
+					<li>
+						<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12.5l4.2 4.2L19 7.2" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" /></svg>
+						<div><strong>Less paralysis</strong><p>The disagreement is on the row. You are not hunting it across ten windows.</p></div>
+					</li>
+				</ul>
+				<div class="cta-row">
+					<CtaButton class="btn-lg">Get the dashboard →</CtaButton>
+				</div>
+			</div>
+		</section>
+
+		<section class="band" id="faq">
+			<div class="container narrow">
+				<h2>Questions</h2>
+				<div class="faq-list">
+					{
+						faqs.map((faq, index) => (
+							<details name="osc-faq" open={index === 0}>
+								<summary>{faq.q}</summary>
+								<p>{faq.a}</p>
+							</details>
+						))
+					}
+				</div>
+				<div class="cta-row">
+					<CtaButton class="btn-lg">Keep RSI. Add a grade. →</CtaButton>
+				</div>
+				<p class="crosslinks">
+					<a href="/">Full <strong>review</strong> →</a>
+					<a href="/profit-goldeneye-pricing"><strong>Pricing</strong> →</a>
+					<a href="/profit-goldeneye-bonus"><strong>Bonuses</strong> →</a>
+				</p>
+			</div>
+		</section>
+
+		<section class="band">
+			<div class="container final-card">
+				<h2>Learn on the free tools. Decide on the panel.</h2>
+				<p>RSI and MACD teach the vocabulary. They do not show the rest of the ladder.</p>
+				<CtaButton class="btn-lg">Get Goldeneye 2.0 for $329 →</CtaButton>
+			</div>
+		</section>
+	</div>
+	<StickyBar />
+</BaseLayout>

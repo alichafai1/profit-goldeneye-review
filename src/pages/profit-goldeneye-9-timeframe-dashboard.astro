@@ -1,0 +1,171 @@
+---
+import '../styles/landing.css';
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Breadcrumbs from '../components/Breadcrumbs.astro';
+import CtaButton from '../components/CtaButton.astro';
+import StickyBar from '../components/StickyBar.astro';
+
+const title = 'How to Read the Goldeneye 9-Timeframe Dashboard';
+const description =
+	'How to read the Goldeneye 2.0 dashboard from M1 to monthly. Find the highlighted cell, then look for confluence when the timeframes point the same way.';
+const canonicalURL = 'https://profitgoldeneyereview.com/profit-goldeneye-9-timeframe-dashboard';
+
+const steps = [
+	{ n: '01', name: 'Find the nine cells', text: 'The top row is M1, M5, M15, M30, H1, H4, D1, W1, and MN. Each cell shows a direction and how long that direction has held.' },
+	{ n: '02', name: 'Find your chart', text: 'The cell for the chart you have open is highlighted. That is the timeframe you are about to trade. The others are the backdrop.' },
+	{ n: '03', name: 'Look for confluence', text: 'Confluence is when the timeframes you care about point the same way. Mixed arrows mean they do not agree. That is not a clean setup.' },
+	{ n: '04', name: 'Then check the grade', text: 'The lamp under the row is EXCELLENT, GOOD, or STANDBY. Alignment plus a top grade is the dashboard’s strongest picture. STANDBY means wait.' },
+];
+
+const faqs = [
+	{
+		q: 'What is confluence on this dashboard?',
+		a: 'The timeframes you are using for the trade point the same way at the same time. For a scalp that might be M1 through H1. For a swing it is H4, D1, and W1. If they disagree, you do not have confluence.',
+	},
+	{
+		q: 'Does every cell have to match?',
+		a: 'No. M1 and monthly rarely tell the same story. Match the cells that belong to your holding time. Ignore the ones that are noise for that trade.',
+	},
+	{
+		q: 'Where do I look first on the image?',
+		a: 'Start at the top row, left to right, from M1 to MN. Then find the highlighted cell. Then look at the grade lamp under that row.',
+	},
+];
+
+const schema = {
+	'@context': 'https://schema.org',
+	'@graph': [
+		{
+			'@type': 'HowTo',
+			name: 'How to read the Goldeneye 9-timeframe dashboard',
+			step: steps.map((step, index) => ({
+				'@type': 'HowToStep',
+				position: index + 1,
+				name: step.name,
+				text: step.text,
+			})),
+		},
+		{
+			'@type': 'FAQPage',
+			mainEntity: faqs.map((faq) => ({
+				'@type': 'Question',
+				name: faq.q,
+				acceptedAnswer: { '@type': 'Answer', text: faq.a },
+			})),
+		},
+	],
+};
+---
+
+<BaseLayout title={title} description={description} canonicalURL={canonicalURL} schema={schema}>
+	<div class="landing">
+		<section class="hero">
+			<div class="container crumbs">
+				<Breadcrumbs
+					items={[
+						{ label: 'Home', href: '/' },
+						{ label: '9-timeframe dashboard', href: '/profit-goldeneye-9-timeframe-dashboard' },
+					]}
+				/>
+			</div>
+			<div class="container hero-grid">
+				<div class="hero-copy">
+					<p class="kicker">M1 to monthly</p>
+					<h1>How to Read the Goldeneye 9-Timeframe Dashboard</h1>
+					<p class="lede">
+						Nine timeframes on one row. You stop opening a new chart every time you want to know what the
+						higher timeframe is doing.
+					</p>
+					<CtaButton class="btn-lg">Get the 9-timeframe dashboard →</CtaButton>
+					<p class="crosslinks">
+						<a href="/">Read the <strong>review</strong> →</a>
+						<a href="/profit-goldeneye-pricing"><strong>Pricing</strong> →</a>
+						<a href="/profit-goldeneye-bonus"><strong>Bonuses</strong> →</a>
+					</p>
+				</div>
+				<figure class="shot">
+					<img
+						src="/images/dashboard.webp"
+						width="1080"
+						height="1256"
+						alt="Goldeneye 2.0 dashboard with the M1 to monthly row across the top and the active timeframe highlighted"
+					/>
+					<figcaption>Look at the top row first. The highlighted cell is the open chart.</figcaption>
+				</figure>
+			</div>
+		</section>
+
+		<section class="band">
+			<div class="container narrow">
+				<h2>Why one row beats nine charts</h2>
+				<p>
+					M1 through MN is the whole ladder: minute, five minutes, fifteen, thirty, hour, four hour, day,
+					week, and month. Seeing them together is how you spot confluence, which is simply those cells
+					pointing the same way.
+				</p>
+				<p class="highlight">
+					If the cells for your trade disagree, you do not have a clean setup. Wait, or trade a different
+					idea.
+				</p>
+				<div class="cta-row">
+					<CtaButton class="btn-lg">See all nine timeframes at once →</CtaButton>
+				</div>
+			</div>
+		</section>
+
+		<section class="band band-alt">
+			<div class="container narrow">
+				<h2>Where to look</h2>
+				<ol class="steps">
+					{
+						steps.map((step) => (
+							<li>
+								<span>{step.n}</span>
+								<div>
+									<h3>{step.name}</h3>
+									<p>{step.text}</p>
+								</div>
+							</li>
+						))
+					}
+				</ol>
+				<div class="cta-row">
+					<CtaButton class="btn-lg">Get Goldeneye 2.0 for $329 →</CtaButton>
+				</div>
+			</div>
+		</section>
+
+		<section class="band" id="faq">
+			<div class="container narrow">
+				<h2>Dashboard questions</h2>
+				<div class="faq-list">
+					{
+						faqs.map((faq, index) => (
+							<details name="dash-faq" open={index === 0}>
+								<summary>{faq.q}</summary>
+								<p>{faq.a}</p>
+							</details>
+						))
+					}
+				</div>
+				<div class="cta-row">
+					<CtaButton class="btn-lg">Open the panel on your chart →</CtaButton>
+				</div>
+				<p class="crosslinks">
+					<a href="/">Full <strong>review</strong> →</a>
+					<a href="/profit-goldeneye-pricing"><strong>Pricing</strong> →</a>
+					<a href="/profit-goldeneye-bonus"><strong>Bonuses</strong> →</a>
+				</p>
+			</div>
+		</section>
+
+		<section class="band">
+			<div class="container final-card">
+				<h2>Alignment first, then the grade</h2>
+				<p>The row tells you if the timeframes agree. The lamp tells you how strong that agreement is.</p>
+				<CtaButton class="btn-lg">Get the dashboard →</CtaButton>
+			</div>
+		</section>
+	</div>
+	<StickyBar />
+</BaseLayout>

@@ -1,0 +1,186 @@
+---
+import '../styles/landing.css';
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Breadcrumbs from '../components/Breadcrumbs.astro';
+import CtaButton from '../components/CtaButton.astro';
+import StickyBar from '../components/StickyBar.astro';
+
+const title = 'The Ultimate Forex Risk Management Guide (2026)';
+const description =
+	'Protect a forex account with the 1% rule, a stop placed before entry, and a lot size that matches that stop. Goldeneye can find the idea. This is how you survive it.';
+const canonicalURL = 'https://profitgoldeneyereview.com/forex-risk-management-guide';
+
+const steps = [
+	{ n: '01', name: 'Pick the percent', text: 'Decide how much of the account you can lose on one trade. One percent is the working rule. On a $10,000 account, that is $100.' },
+	{ n: '02', name: 'Place the stop first', text: 'The stop goes where the idea is wrong, not where the dollar loss feels comfortable. Measure that distance before you think about lot size.' },
+	{ n: '03', name: 'Turn cash and distance into size', text: 'Lot size is the cash you are willing to lose, divided by the distance to the stop. A wider stop means a smaller position. A tighter stop means you can trade larger, not that you should.' },
+	{ n: '04', name: 'Skip the trade if the size is absurd', text: 'If the correct lot is too small to bother with, or so large that one slip blows the plan, do not take it. The next idea is the trade. This one is not.' },
+];
+
+const checks = [
+	{ title: 'Risk 1% or less', copy: 'One loss should annoy you. It should not end the account.' },
+	{ title: 'Stop before entry', copy: 'If you cannot name the invalidation, you cannot size the trade.' },
+	{ title: 'No revenge size', copy: 'A loss does not earn you a bigger next position.' },
+];
+
+const faqs = [
+	{
+		q: 'What is the 1% rule?',
+		a: 'You risk no more than 1% of the account on a single trade. A $10,000 account risks $100. Ten losses in a row still leave most of the account.',
+	},
+	{
+		q: 'Does Goldeneye set my stop?',
+		a: 'No. Goldeneye can show a graded idea. The stop, the percent, and the lot size are yours. That is the difference between finding a trade and surviving it.',
+	},
+	{
+		q: 'Where does the lot-size calculator come from?',
+		a: 'It is one of the bonuses on this site when you buy Goldeneye 2.0 through the buttons here. You enter account size and risk percent. It returns the lot size. You still have to use that number.',
+	},
+];
+
+const schema = {
+	'@context': 'https://schema.org',
+	'@graph': [
+		{
+			'@type': 'HowTo',
+			name: 'How to size a forex trade with the 1% rule',
+			step: steps.map((step, index) => ({
+				'@type': 'HowToStep',
+				position: index + 1,
+				name: step.name,
+				text: step.text,
+			})),
+		},
+		{
+			'@type': 'FAQPage',
+			mainEntity: faqs.map((faq) => ({
+				'@type': 'Question',
+				name: faq.q,
+				acceptedAnswer: { '@type': 'Answer', text: faq.a },
+			})),
+		},
+	],
+};
+---
+
+<BaseLayout title={title} description={description} canonicalURL={canonicalURL} schema={schema}>
+	<div class="landing">
+		<section class="hero">
+			<div class="container crumbs">
+				<Breadcrumbs
+					items={[
+						{ label: 'Home', href: '/' },
+						{ label: 'Risk management', href: '/forex-risk-management-guide' },
+					]}
+				/>
+			</div>
+			<div class="container hero-plain">
+				<p class="kicker">Survive first</p>
+				<h1>The Ultimate Forex Risk Management Guide (2026)</h1>
+				<p class="lede">
+					A good signal does not protect the account. The percent you risk, the stop, and the lot size do.
+					Goldeneye can help you find the trade. This is how you stay in the game after it.
+				</p>
+				<CtaButton class="btn-lg">Get Goldeneye 2.0 + the risk calculator →</CtaButton>
+				<p class="crosslinks">
+					<a href="/">Read the <strong>review</strong> →</a>
+					<a href="/profit-goldeneye-pricing"><strong>Pricing</strong> →</a>
+					<a href="/profit-goldeneye-bonus"><strong>Bonuses</strong> →</a>
+				</p>
+			</div>
+		</section>
+
+		<section class="band">
+			<div class="container narrow">
+				<h2>The 1% rule</h2>
+				<p>
+					Risk one percent of the account on a trade, or less. On $10,000, one percent is $100. You can be
+					wrong ten times and still have most of the account. Risk ten percent and three losses change who
+					you are as a trader.
+				</p>
+				<div class="problem">
+					<p>
+						The stop is not a comfort setting. It is the price that proves the idea wrong. Put it there
+						first, then make the position small enough that hitting it costs only that one percent.
+					</p>
+				</div>
+				<div class="cta-row">
+					<CtaButton class="btn-lg">
+						Want to calculate your lot size automatically? Get Goldeneye 2.0 + My Risk Calculator Bonus →
+					</CtaButton>
+				</div>
+			</div>
+		</section>
+
+		<section class="band band-alt">
+			<div class="container narrow">
+				<h2>Size the trade in this order</h2>
+				<ol class="steps">
+					{
+						steps.map((step) => (
+							<li>
+								<span>{step.n}</span>
+								<div>
+									<h3>{step.name}</h3>
+									<p>{step.text}</p>
+								</div>
+							</li>
+						))
+					}
+				</ol>
+				<div class="cta-row">
+					<CtaButton class="btn-lg">Get the calculator with Goldeneye →</CtaButton>
+				</div>
+			</div>
+		</section>
+
+		<section class="band">
+			<div class="container">
+				<h2>Keep these three</h2>
+				<ul class="checks">
+					{
+						checks.map((item) => (
+							<li>
+								<svg viewBox="0 0 24 24" aria-hidden="true">
+									<path d="M5 12.5l4.2 4.2L19 7.2" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" />
+								</svg>
+								<div>
+									<strong>{item.title}</strong>
+									<p>{item.copy}</p>
+								</div>
+							</li>
+						))
+					}
+				</ul>
+				<div class="cta-row">
+					<CtaButton class="btn-lg">Find the trade, then size it →</CtaButton>
+				</div>
+			</div>
+		</section>
+
+		<section class="band band-alt" id="faq">
+			<div class="container narrow">
+				<h2>Risk questions</h2>
+				<div class="faq-list">
+					{
+						faqs.map((faq, index) => (
+							<details name="risk-faq" open={index === 0}>
+								<summary>{faq.q}</summary>
+								<p>{faq.a}</p>
+							</details>
+						))
+					}
+				</div>
+				<div class="cta-row">
+					<CtaButton class="btn-lg">Get Goldeneye 2.0 for $329 →</CtaButton>
+				</div>
+				<p class="crosslinks">
+					<a href="/">Full <strong>review</strong> →</a>
+					<a href="/profit-goldeneye-pricing"><strong>Pricing</strong> →</a>
+					<a href="/profit-goldeneye-bonus"><strong>Bonuses</strong> →</a>
+				</p>
+			</div>
+		</section>
+	</div>
+	<StickyBar />
+</BaseLayout>

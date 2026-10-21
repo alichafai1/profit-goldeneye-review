@@ -1,0 +1,80 @@
+---
+import '../styles/legal.css';
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Breadcrumbs from '../components/Breadcrumbs.astro';
+
+const title = 'Affiliate Disclosure';
+const description =
+	'This independent review site may earn a commission if you buy The Profit Goldeneye 2.0 through our JVZoo links. The price you pay does not increase.';
+const canonicalURL = 'https://profitgoldeneyereview.com/affiliate-disclosure';
+
+const faqs = [
+	{
+		q: 'Do you earn money if I buy through this site?',
+		a: 'Yes. Some links go to JVZoo, the checkout for The Profit Goldeneye 2.0. If you buy through those links, we may earn a commission.',
+	},
+	{
+		q: 'Does that commission cost me more?',
+		a: 'No. The price is the price on the checkout. The commission is paid by the seller’s program, not added on top of your order.',
+	},
+	{
+		q: 'Do you work for the seller?',
+		a: 'No. This site is an independent review. A commission does not make us Element Forex, and it does not make a losing trade our trade.',
+	},
+];
+
+const schema = {
+	'@context': 'https://schema.org',
+	'@type': 'FAQPage',
+	mainEntity: faqs.map((faq) => ({
+		'@type': 'Question',
+		name: faq.q,
+		acceptedAnswer: { '@type': 'Answer', text: faq.a },
+	})),
+};
+---
+
+<BaseLayout title={title} description={description} canonicalURL={canonicalURL} schema={schema}>
+	<article class="legal">
+		<div class="container legal-wrap">
+			<Breadcrumbs
+				items={[
+					{ label: 'Home', href: '/' },
+					{ label: 'Affiliate Disclosure', href: '/affiliate-disclosure' },
+				]}
+			/>
+			<h1>Affiliate Disclosure</h1>
+			<p>
+				profitgoldeneyereview.com is an independent review site. We are not Element Forex and we do not sell
+				the indicator ourselves.
+			</p>
+			<p>
+				Some links on this site go to JVZoo, which processes the order for The Profit Goldeneye 2.0. If you
+				buy through those links, we may earn a commission. You do not pay extra. The checkout price is the
+				same price you would see without our link.
+			</p>
+			<p>
+				A commission can create a bias. We say so here so you can read the reviews with that in mind. Opinions
+				on this site are still opinions. They are not a promise that a signal will win, and they are not
+				financial advice.
+			</p>
+			<p>
+				Questions about this disclosure: <a href="mailto:contact@profitgoldeneyereview.com">contact@profitgoldeneyereview.com</a>.
+			</p>
+			<h2>Common questions</h2>
+			{
+				faqs.map((faq) => (
+					<>
+						<h2>{faq.q}</h2>
+						<p>{faq.a}</p>
+					</>
+				))
+			}
+			<p class="links">
+				<a href="/">Review</a>
+				<a href="/profit-goldeneye-pricing">Pricing</a>
+				<a href="/profit-goldeneye-bonus">Bonuses</a>
+			</p>
+		</div>
+	</article>
+</BaseLayout>

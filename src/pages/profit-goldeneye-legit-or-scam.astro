@@ -1,0 +1,524 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Breadcrumbs from '../components/Breadcrumbs.astro';
+import CtaButton from '../components/CtaButton.astro';
+import StickyBar from '../components/StickyBar.astro';
+
+const title = 'Is The Profit Goldeneye 2.0 a Scam? Honest 2026 Verdict';
+const description =
+	'Worried Goldeneye 2.0 might be a scam? We analyze the creator, the software, and the pricing to give you the honest truth before you buy.';
+const canonicalURL = 'https://profitgoldeneyereview.com/profit-goldeneye-legit-or-scam';
+
+const faqs = [
+	{
+		q: 'Is Goldeneye 2.0 a scam?',
+		a: 'No. The Profit Goldeneye 2.0 is a real MetaTrader 4 and MetaTrader 5 indicator sold by Element Forex. It does not take deposits, hold your money, or operate as a broker. You install it on the platform you already use. That does not mean every signal wins. It means the product is a chart tool, not a fund.',
+	},
+	{
+		q: 'Who is Element Forex?',
+		a: 'Element Forex is the name on the official Goldeneye 2.0 sales site and on the refund policy for this product. They describe themselves as the team that built and tested the indicator. This review does not treat that as a regulated-broker license. It treats them as the software seller.',
+	},
+	{
+		q: 'Is there a refund policy?',
+		a: 'Yes, and it is narrow. Element Forex publishes a 7-day refund limited to an accidental double purchase or a technical failure on their side that they confirm. Change of mind and losing trades are listed as non-refundable. Read the policy on the checkout page before you pay. A refund deactivates the license key.',
+	},
+	{
+		q: 'Does it work on MT4 and MT5?',
+		a: 'Yes. The seller includes both a MetaTrader 4 and a MetaTrader 5 version in the $329 purchase, with the same panel, grades, and alerts.',
+	},
+];
+
+const green = [
+	{
+		title: 'It is an indicator, not a broker',
+		copy: 'There is no conflict over your deposit. Goldeneye does not custody funds, set your leverage, or take the other side of your trade.',
+	},
+	{
+		title: 'One payment of $329',
+		copy: 'The sales page lists a one-time fee. It does not show a monthly subscription for the indicator.',
+	},
+	{
+		title: 'A 7-day refund policy is published',
+		copy: 'Read it on the checkout page. It covers a double charge or a failure on their side, not a change of mind.',
+	},
+	{
+		title: 'The Triad is a real panel feature',
+		copy: 'SIGHT, FORCE, and PULSE are meters you can see on the dashboard. You can check that they exist. You still have to judge whether the grades help your trading.',
+	},
+	{
+		title: 'Built for more than one style',
+		copy: 'The nine-timeframe row runs from M1 to monthly, so scalpers, day traders, and swing traders can each read a different part of the same panel.',
+	},
+];
+
+const red = [
+	{
+		title: 'High upfront cost',
+		copy: '$329 is a significant investment for an indicator. A cheap arrow script costs a fraction of that.',
+	},
+	{
+		title: 'Not a robot',
+		copy: 'It does not trade for you. You still choose the entry, the stop, and the size.',
+	},
+];
+
+const skip = [
+	'People looking for a fully automated money printer.',
+	'People who cannot afford to risk their trading capital.',
+	"People who don't understand MT4 or MT5.",
+];
+
+const schema = {
+	'@context': 'https://schema.org',
+	'@graph': [
+		{
+			'@type': 'FAQPage',
+			mainEntity: faqs.map((faq) => ({
+				'@type': 'Question',
+				name: faq.q,
+				acceptedAnswer: { '@type': 'Answer', text: faq.a },
+			})),
+		},
+	],
+};
+---
+
+<BaseLayout title={title} description={description} canonicalURL={canonicalURL} schema={schema}>
+	<section class="hero">
+		<div class="container crumbs">
+			<Breadcrumbs
+				items={[
+					{ label: 'Home', href: '/' },
+					{ label: 'Legit or Scam', href: '/profit-goldeneye-legit-or-scam' },
+				]}
+			/>
+		</div>
+		<div class="container hero-copy">
+			<p class="kicker">2026 verdict</p>
+			<h1>Is The Profit Goldeneye 2.0 a Scam? The Honest Truth (2026)</h1>
+			<p class="lede">
+				Searching for 'Golden Profit' reveals some questionable brokers. But Goldeneye 2.0 is different. It's a
+				trading indicator, not a broker. Here is our unbiased breakdown.
+			</p>
+			<CtaButton class="btn-lg">Get Goldeneye 2.0 for $329 →</CtaButton>
+			<p class="crosslinks">
+				<a href="/">Read our full <strong>Goldeneye 2.0 Review</strong> →</a>
+				<a href="/profit-goldeneye-pricing">See the <strong>Goldeneye 2.0 Pricing</strong> →</a>
+			</p>
+		</div>
+	</section>
+
+	<section class="band">
+		<div class="container">
+			<aside class="verdict">
+				<p class="kicker">Quick verdict</p>
+				<p>
+					Verdict: <strong>Legit</strong>. Goldeneye 2.0 is a real MT4/MT5 indicator created by Element Forex.
+					It does not hold your funds or act as a broker. It is a tool to help you read price action.
+				</p>
+			</aside>
+		</div>
+	</section>
+
+	<section class="band band-alt">
+		<div class="container narrow">
+			<h2>Why People Think It's a Scam</h2>
+			<p>
+				Search results for “Golden Profit” and “Golden Day Profit” turn up brokers, and those names carry poor
+				reviews. The words are close enough that people assume every “golden” trading offer is the same company.
+			</p>
+			<p class="callout">
+				Goldeneye 2.0 is <strong>not</strong> a broker. You install it on your own MT4/MT5 platform. You keep
+				control of your funds.
+			</p>
+			<p>
+				A scam broker asks you to deposit with them. This product asks you to drop an indicator on a chart you
+				already have at your own broker. Those are different businesses. A real indicator can still be a bad
+				purchase if you expected it to trade for you.
+			</p>
+		</div>
+	</section>
+
+	<section class="band">
+		<div class="container">
+			<h2>5 Green Flags</h2>
+			<p class="section-lead">Why the product itself is legitimate, separate from whether you should buy it.</p>
+			<ul class="flags">
+				{
+					green.map((item) => (
+						<li class="good">
+							<svg viewBox="0 0 24 24" aria-hidden="true">
+								<path
+									d="M5 12.5l4.2 4.2L19 7.2"
+									fill="none"
+									stroke="currentColor"
+									stroke-width="2.2"
+									stroke-linecap="round"
+									stroke-linejoin="round"
+								/>
+							</svg>
+							<div>
+								<h3>{item.title}</h3>
+								<p>{item.copy}</p>
+							</div>
+						</li>
+					))
+				}
+			</ul>
+		</div>
+	</section>
+
+	<section class="band band-alt">
+		<div class="container">
+			<h2>2 Red Flags</h2>
+			<p class="section-lead">Honest limitations. Legit does not mean cheap, and it does not mean automatic.</p>
+			<ul class="flags">
+				{
+					red.map((item) => (
+						<li class="bad">
+							<svg viewBox="0 0 24 24" aria-hidden="true">
+								<path
+									d="M6 6l12 12M18 6L6 18"
+									fill="none"
+									stroke="currentColor"
+									stroke-width="2.4"
+									stroke-linecap="round"
+								/>
+							</svg>
+							<div>
+								<h3>{item.title}</h3>
+								<p>{item.copy}</p>
+							</div>
+						</li>
+					))
+				}
+			</ul>
+		</div>
+	</section>
+
+	<section class="band">
+		<div class="container narrow">
+			<h2>Who Should NOT Buy This?</h2>
+			<ul class="skip">
+				{
+					skip.map((item) => (
+						<li>{item}</li>
+					))
+				}
+			</ul>
+			<p>
+				If you already trade on MT4 or MT5 and you want a dashboard instead of another broker account, this is
+				the product the sales page is actually selling.
+			</p>
+			<div class="cta-row">
+				<CtaButton class="btn-lg">Get Goldeneye 2.0 for $329 →</CtaButton>
+			</div>
+		</div>
+	</section>
+
+	<section class="band band-alt" id="faq">
+		<div class="container narrow">
+			<h2>Questions before you buy</h2>
+			<div class="faq-list">
+				{
+					faqs.map((faq, index) => (
+						<details name="legit-faq" open={index === 0}>
+							<summary>{faq.q}</summary>
+							<p>{faq.a}</p>
+						</details>
+					))
+				}
+			</div>
+		</div>
+	</section>
+
+	<section class="final">
+		<div class="container final-inner">
+			<h2>The short version</h2>
+			<p>
+				Goldeneye 2.0 is a legitimate indicator from Element Forex. It is not the brokers that show up when you
+				search similar names, and it does not hold your money. You still decide every trade, and $329 is still
+				a lot to spend on a chart tool.
+			</p>
+			<CtaButton class="btn-lg">Try Goldeneye 2.0 Risk-Free Today →</CtaButton>
+			<p class="fine">
+				“Risk-free” here means read the 7-day checkout policy before you pay. It is not a general
+				change-of-mind guarantee.
+			</p>
+			<p class="crosslinks">
+				<a href="/profit-goldeneye-bonus">Claim your <strong>Exclusive Bonuses</strong> after purchase →</a>
+			</p>
+		</div>
+	</section>
+
+	<StickyBar />
+</BaseLayout>
+
+<style>
+	.kicker {
+		margin: 0 0 0.8rem;
+		color: var(--color-primary);
+		font-size: 0.78rem;
+		font-weight: 700;
+		letter-spacing: 0.14em;
+		text-transform: uppercase;
+	}
+
+	h2 {
+		margin: 0;
+		font-size: clamp(1.9rem, 4vw, 2.6rem);
+	}
+
+	h3 {
+		margin: 0;
+		font-size: 1.15rem;
+	}
+
+	.hero {
+		position: relative;
+		padding: 2.2rem 0 4.25rem;
+		background:
+			radial-gradient(ellipse 70% 55% at 50% -10%, rgba(212, 175, 55, 0.18), transparent 58%),
+			linear-gradient(180deg, var(--color-bg-alt) 0%, var(--color-bg) 80%);
+		overflow: hidden;
+	}
+
+	.hero::before {
+		content: '';
+		position: absolute;
+		inset: 0;
+		background-image:
+			linear-gradient(rgba(248, 250, 252, 0.035) 1px, transparent 1px),
+			linear-gradient(90deg, rgba(248, 250, 252, 0.035) 1px, transparent 1px);
+		background-size: 72px 72px;
+		mask-image: linear-gradient(180deg, #000 15%, transparent 82%);
+		pointer-events: none;
+	}
+
+	.crumbs,
+	.hero-copy {
+		position: relative;
+	}
+
+	.hero-copy {
+		margin-top: 2rem;
+		text-align: center;
+	}
+
+	h1 {
+		max-width: 16em;
+		margin-inline: auto;
+		font-size: clamp(2.15rem, 5vw, 3.55rem);
+	}
+
+	.lede,
+	.section-lead,
+	.narrow p,
+	.flags p {
+		color: var(--color-text-light);
+	}
+
+	.lede {
+		max-width: 42rem;
+		margin: 1.1rem auto 0;
+		font-size: 1.08rem;
+	}
+
+	.hero-copy :global(.btn),
+	.cta-row {
+		margin-top: 1.4rem;
+	}
+
+	.crosslinks {
+		display: flex;
+		flex-wrap: wrap;
+		justify-content: center;
+		gap: 0.75rem 1.4rem;
+		margin-top: 1.25rem;
+	}
+
+	.crosslinks a {
+		color: var(--color-primary);
+		text-decoration: none;
+	}
+
+	.crosslinks a:hover {
+		text-decoration: underline;
+	}
+
+	.band {
+		padding: 4.25rem 0;
+	}
+
+	.band-alt {
+		background: linear-gradient(180deg, rgba(19, 27, 42, 0.7), rgba(11, 15, 25, 0));
+	}
+
+	.narrow {
+		max-width: 820px;
+	}
+
+	.narrow p + p,
+	.flags p {
+		margin-top: 0.45rem;
+	}
+
+	.section-lead {
+		max-width: 42rem;
+		margin-top: 0.85rem;
+	}
+
+	.verdict {
+		padding: 1.4rem 1.35rem;
+		background: var(--color-bg-alt);
+		border: 1px solid var(--color-primary);
+		border-radius: var(--radius-lg);
+		box-shadow: var(--shadow-glow);
+	}
+
+	.verdict p:last-child {
+		font-size: 1.15rem;
+	}
+
+	.verdict strong {
+		color: var(--color-success);
+	}
+
+	.callout {
+		margin-top: 1.1rem;
+		padding: 1rem 1.1rem;
+		font-family: var(--font-display);
+		font-size: 1.2rem;
+		font-weight: 600;
+		color: var(--color-text);
+		background: rgba(212, 175, 55, 0.08);
+		border-left: 3px solid var(--color-primary);
+		border-radius: 0 var(--radius-md) var(--radius-md) 0;
+	}
+
+	.flags,
+	.skip {
+		display: grid;
+		gap: 0.85rem;
+		margin: 1.4rem 0 0;
+		padding: 0;
+		list-style: none;
+	}
+
+	.flags li {
+		display: flex;
+		gap: 0.85rem;
+		align-items: flex-start;
+		padding: 1.1rem 1.05rem;
+		background: var(--color-bg-alt);
+		border: 1px solid var(--color-border);
+		border-radius: var(--radius-lg);
+	}
+
+	.flags svg {
+		flex: none;
+		width: 1.4rem;
+		height: 1.4rem;
+		margin-top: 0.15rem;
+	}
+
+	.good {
+		border-color: rgba(0, 200, 83, 0.4);
+	}
+
+	.good svg {
+		color: var(--color-success);
+	}
+
+	.bad {
+		border-color: rgba(255, 61, 0, 0.4);
+	}
+
+	.bad svg {
+		color: var(--color-danger);
+	}
+
+	.skip li {
+		padding: 0.85rem 1rem;
+		background: var(--color-bg-alt);
+		border: 1px solid var(--color-border);
+		border-radius: var(--radius-md);
+	}
+
+	.faq-list {
+		display: grid;
+		gap: 0.7rem;
+		margin-top: 1.4rem;
+	}
+
+	details {
+		background: var(--color-bg-alt);
+		border: 1px solid var(--color-border);
+		border-radius: var(--radius-md);
+	}
+
+	details[open] {
+		border-color: var(--color-primary);
+	}
+
+	summary {
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+		gap: 1rem;
+		padding: 1rem 1.1rem;
+		font-family: var(--font-display);
+		font-weight: 600;
+		cursor: pointer;
+		list-style: none;
+	}
+
+	summary::-webkit-details-marker {
+		display: none;
+	}
+
+	summary::after {
+		content: '+';
+		color: var(--color-primary);
+		font-size: 1.3rem;
+		line-height: 1;
+	}
+
+	details[open] summary::after {
+		content: '–';
+	}
+
+	details p {
+		padding: 0 1.1rem 1.05rem;
+		color: var(--color-text-light);
+	}
+
+	.final {
+		padding: 0 0 1rem;
+	}
+
+	.final-inner {
+		max-width: 820px;
+		padding: 2rem 1.4rem 2.1rem;
+		text-align: center;
+		background:
+			radial-gradient(ellipse at top, rgba(212, 175, 55, 0.16), transparent 55%),
+			var(--color-bg-alt);
+		border: 1px solid var(--color-primary);
+		border-radius: var(--radius-lg);
+		box-shadow: var(--shadow-glow);
+	}
+
+	.final-inner p {
+		margin-top: 0.85rem;
+		color: var(--color-text-light);
+	}
+
+	.final-inner :global(.btn) {
+		margin-top: 1.4rem;
+	}
+
+	.fine {
+		font-size: 0.85rem;
+	}
+</style>

@@ -1,0 +1,218 @@
+---
+import '../styles/landing.css';
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Breadcrumbs from '../components/Breadcrumbs.astro';
+import CtaButton from '../components/CtaButton.astro';
+import StickyBar from '../components/StickyBar.astro';
+
+const title = 'The Profit Goldeneye 2.0 for Scalpers: Fast M1 & M5 Signals';
+const description =
+	'Goldeneye 2.0 for scalpers: read M1 and M5 momentum from SIGHT, FORCE, and PULSE without flipping charts. Graded signals and pop-up alerts on MT4 and MT5.';
+const canonicalURL = 'https://profitgoldeneyereview.com/profit-goldeneye-for-scalpers';
+
+const checks = [
+	{ title: 'See M1 to H1 in one dashboard', copy: 'The short-term row is on the same panel as the chart you are scalping.' },
+	{ title: 'Instant pop-up alerts', copy: 'A sound alert can call you when a graded signal prints. You still place the order.' },
+	{ title: 'Graded signals for high-probability setups', copy: 'EXCELLENT, GOOD, or STANDBY. Skip the prints that are not ranked.' },
+];
+
+const faqs = [
+	{
+		q: 'Can I scalp M1 with Goldeneye 2.0?',
+		a: 'Yes. The panel includes M1 and M5 next to M15 and H1. Those are the cells a scalper reads first. The higher cells are context, not a reason to hold a one-minute trade for an hour.',
+	},
+	{
+		q: 'Will the meters keep me from being late?',
+		a: 'SIGHT, FORCE, and PULSE are a live momentum read, which is faster than waiting for a moving-average cross. They do not remove spread, slippage, or a late click. Test the timing on a demo.',
+	},
+	{
+		q: 'Does it repaint on M1?',
+		a: 'The creator claims the signals do not repaint. A one-minute chart is where a redraw costs you fastest. Mark an EXCELLENT signal on demo and see if it stays after the next candles close.',
+	},
+	{
+		q: 'Is this a scalping robot?',
+		a: 'No. Alerts and grades tell you to look. You still choose the entry, the stop, and the size. A grade is not an order.',
+	},
+];
+
+const schema = {
+	'@context': 'https://schema.org',
+	'@type': 'FAQPage',
+	mainEntity: faqs.map((faq) => ({
+		'@type': 'Question',
+		name: faq.q,
+		acceptedAnswer: { '@type': 'Answer', text: faq.a },
+	})),
+};
+---
+
+<BaseLayout title={title} description={description} canonicalURL={canonicalURL} schema={schema}>
+	<div class="landing">
+		<section class="hero">
+			<div class="container crumbs">
+				<Breadcrumbs
+					items={[
+						{ label: 'Home', href: '/' },
+						{ label: 'For scalpers', href: '/profit-goldeneye-for-scalpers' },
+					]}
+				/>
+			</div>
+			<div class="container hero-grid">
+				<div class="hero-copy">
+					<p class="kicker">M1 and M5</p>
+					<h1>Goldeneye 2.0 for Scalpers: Catch the M1 & M5 Momentum</h1>
+					<p class="lede">
+						Scalping moves faster than a lagging indicator. By the time a moving average crosses on M1, the
+						push you wanted is often gone. Goldeneye puts the short-term grade on one panel.
+					</p>
+					<CtaButton class="btn-lg">Get Goldeneye 2.0 for M1 and M5 →</CtaButton>
+					<p class="crosslinks">
+						<a href="/">Read the <strong>Goldeneye 2.0 Review</strong> →</a>
+						<a href="/profit-goldeneye-pricing">See <strong>Pricing</strong> →</a>
+						<a href="/profit-goldeneye-bonus">Claim the <strong>Bonuses</strong> →</a>
+					</p>
+				</div>
+				<figure class="shot">
+					<img
+						src="/images/dashboard.webp"
+						width="1080"
+						height="1256"
+						alt="Goldeneye 2.0 dashboard on XAUUSD M5 with the M1 to monthly row and an Excellent Buy grade"
+					/>
+					<figcaption>Seller screenshot. The M5 cell is the active chart. Numbers are illustrative.</figcaption>
+				</figure>
+			</div>
+		</section>
+
+		<section class="band">
+			<div class="container narrow">
+				<h2>The scalper's problem</h2>
+				<div class="problem">
+					<p>
+						Scalping requires split-second decisions. You don't have time to check 5 different charts. If
+						your indicator repaints, you lose money in seconds.
+					</p>
+					<p class="highlight">
+						A one-minute redraw does not give you time to think. The signal is either there while the
+						candle is open, or it is useless.
+					</p>
+				</div>
+				<div class="cta-row">
+					<CtaButton class="btn-lg">Stop flipping charts mid-scalp →</CtaButton>
+				</div>
+			</div>
+		</section>
+
+		<section class="band band-alt">
+			<div class="container">
+				<h2>How Goldeneye helps on M1 and M5</h2>
+				<p class="section-lead">
+					Read the M1 and M5 cells first. SIGHT, FORCE, and PULSE are the instant momentum check: direction,
+					strength, and timing, without building a new chart.
+				</p>
+				<div class="meters">
+					<article>
+						<span>SIGHT</span>
+						<h3>Direction</h3>
+						<p>Which way the fast chart is leaning before you click.</p>
+					</article>
+					<article>
+						<span>FORCE</span>
+						<h3>Strength</h3>
+						<p>Whether the move has weight or is a drift that dies in the spread.</p>
+					</article>
+					<article>
+						<span>PULSE</span>
+						<h3>Timing</h3>
+						<p>Whether the push is fresh enough for a scalp or already tired.</p>
+					</article>
+				</div>
+				<div class="split">
+					<div>
+						<p>
+							EXCELLENT is the grade for a setup the panel ranks at the top. GOOD is a look, not a chase.
+							STANDBY means you do not force a scalp. Enter and exit on your own rules. The panel does
+							not place the trade.
+						</p>
+						<p>
+							The creator claims the signals do not repaint. On M1 that claim matters most. Confirm it on
+							a demo before you use real size.
+						</p>
+						<div class="cta-row">
+							<CtaButton class="btn-lg">Get the M1 and M5 panel →</CtaButton>
+						</div>
+					</div>
+					<figure class="shot">
+						<img
+							src="/images/triad.webp"
+							width="1060"
+							height="749"
+							alt="Goldeneye signal card with SIGHT, FORCE, and PULSE meters and an Excellent grade"
+						/>
+						<figcaption>The triad meters scalpers use for a one-glance momentum read.</figcaption>
+					</figure>
+				</div>
+			</div>
+		</section>
+
+		<section class="band">
+			<div class="container">
+				<h2>What scalpers use on the panel</h2>
+				<ul class="checks">
+					{
+						checks.map((item) => (
+							<li>
+								<svg viewBox="0 0 24 24" aria-hidden="true">
+									<path d="M5 12.5l4.2 4.2L19 7.2" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" />
+								</svg>
+								<div>
+									<strong>{item.title}</strong>
+									<p>{item.copy}</p>
+								</div>
+							</li>
+						))
+					}
+				</ul>
+				<div class="cta-row">
+					<CtaButton class="btn-lg">Get Goldeneye 2.0 for $329 →</CtaButton>
+				</div>
+			</div>
+		</section>
+
+		<section class="band band-alt" id="faq">
+			<div class="container narrow">
+				<h2>Scalper questions</h2>
+				<div class="faq-list">
+					{
+						faqs.map((faq, index) => (
+							<details name="scalper-faq" open={index === 0}>
+								<summary>{faq.q}</summary>
+								<p>{faq.a}</p>
+							</details>
+						))
+					}
+				</div>
+				<div class="cta-row">
+					<CtaButton class="btn-lg">Scalp with a graded M1 panel →</CtaButton>
+				</div>
+			</div>
+		</section>
+
+		<section class="band">
+			<div class="container final-card">
+				<h2>Fast charts need a fast read</h2>
+				<p>
+					If you already scalp MT4 or MT5, the dashboard is the part that replaces five chart flips. $329
+					once. You still click the order.
+				</p>
+				<CtaButton class="btn-lg">Get Goldeneye 2.0 for scalpers →</CtaButton>
+				<p class="crosslinks">
+					<a href="/">Full <strong>review</strong> →</a>
+					<a href="/profit-goldeneye-pricing"><strong>Pricing</strong> →</a>
+					<a href="/profit-goldeneye-bonus"><strong>Bonuses</strong> →</a>
+				</p>
+			</div>
+		</section>
+	</div>
+	<StickyBar />
+</BaseLayout>

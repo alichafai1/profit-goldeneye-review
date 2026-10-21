@@ -1,0 +1,165 @@
+---
+import '../styles/landing.css';
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Breadcrumbs from '../components/Breadcrumbs.astro';
+import CtaButton from '../components/CtaButton.astro';
+import StickyBar from '../components/StickyBar.astro';
+
+const title = 'Goldeneye 2.0 vs. LuxAlgo: Which Signal Indicator is Better?';
+const description =
+	'LuxAlgo is a popular TradingView suite. Goldeneye 2.0 is a $329 one-time dashboard on MT4 and MT5, with a triad and nine timeframes. Here is the honest split.';
+const canonicalURL = 'https://profitgoldeneyereview.com/goldeneye-vs-luxalgo';
+
+const rows = [
+	{ feature: 'Price', goldeneye: '$329 once', other: 'Paid subscription on TradingView' },
+	{ feature: 'Platform', goldeneye: 'MT4 and MT5', other: 'TradingView' },
+	{ feature: 'Dashboard', goldeneye: 'SIGHT, FORCE, and PULSE', other: 'Script overlays and signals' },
+	{ feature: 'Timeframes', goldeneye: 'Nine on one chart', other: 'The chart you have open' },
+	{ feature: 'Order', goldeneye: 'On the same platform as the panel', other: 'You copy the idea into MetaTrader' },
+];
+
+const faqs = [
+	{
+		q: 'Is LuxAlgo a bad product?',
+		a: 'No. It is a large TradingView toolkit, and plenty of people chart with it. This comparison is about where the decision happens. LuxAlgo stays in the browser. Goldeneye is installed on MT4 or MT5.',
+	},
+	{
+		q: 'Which one should I buy?',
+		a: 'Choose LuxAlgo if you want a TradingView script. Choose Goldeneye if you want the 9-timeframe dashboard and the triad on the MetaTrader chart you already trade.',
+	},
+	{
+		q: 'Does Goldeneye replace TradingView?',
+		a: 'No. Keep TradingView if you like drawing there. Goldeneye does not host charts in a browser. It is a panel on MetaTrader.',
+	},
+];
+
+const schema = {
+	'@context': 'https://schema.org',
+	'@type': 'FAQPage',
+	mainEntity: faqs.map((faq) => ({
+		'@type': 'Question',
+		name: faq.q,
+		acceptedAnswer: { '@type': 'Answer', text: faq.a },
+	})),
+};
+---
+
+<BaseLayout title={title} description={description} canonicalURL={canonicalURL} schema={schema}>
+	<div class="landing">
+		<section class="hero">
+			<div class="container crumbs">
+				<Breadcrumbs
+					items={[
+						{ label: 'Home', href: '/' },
+						{ label: 'Vs LuxAlgo', href: '/goldeneye-vs-luxalgo' },
+					]}
+				/>
+			</div>
+			<div class="container hero-plain">
+				<p class="kicker">TradingView vs MetaTrader</p>
+				<h1>Goldeneye 2.0 vs. LuxAlgo: The Honest Comparison</h1>
+				<p class="lede">
+					LuxAlgo is popular because TradingView is where a lot of people draw. Goldeneye is the other job:
+					a native dashboard on the MT4 or MT5 chart where the order is placed.
+				</p>
+				<div class="verdict">
+					<p><strong>Quick verdict.</strong> Choose LuxAlgo if you want a TradingView script. Choose Goldeneye if you want a complete 9-timeframe dashboard directly on your MT4/MT5 chart.</p>
+				</div>
+				<CtaButton class="btn-lg">Get Goldeneye 2.0 on MT4 →</CtaButton>
+				<p class="crosslinks">
+					<a href="/">Read the <strong>review</strong> →</a>
+					<a href="/profit-goldeneye-pricing"><strong>Pricing</strong> →</a>
+					<a href="/profit-goldeneye-bonus"><strong>Bonuses</strong> →</a>
+				</p>
+			</div>
+		</section>
+
+		<section class="band">
+			<div class="container">
+				<h2>Price, platform, dashboard</h2>
+				<div class="table-scroll">
+					<table class="compare">
+						<caption>Goldeneye 2.0 compared with LuxAlgo</caption>
+						<thead>
+							<tr>
+								<th scope="col">Feature</th>
+								<th class="hl" scope="col">Goldeneye 2.0</th>
+								<th scope="col">LuxAlgo</th>
+							</tr>
+						</thead>
+						<tbody>
+							{
+								rows.map((row) => (
+									<tr>
+										<th scope="row">{row.feature}</th>
+										<td class="hl" data-label="Goldeneye 2.0">{row.goldeneye}</td>
+										<td data-label="LuxAlgo">{row.other}</td>
+									</tr>
+								))
+							}
+						</tbody>
+					</table>
+				</div>
+				<div class="cta-row">
+					<CtaButton class="btn-lg">Pay once, stay on MetaTrader →</CtaButton>
+				</div>
+			</div>
+		</section>
+
+		<section class="band band-alt">
+			<div class="container split">
+				<div>
+					<h2>Where Goldeneye wins</h2>
+					<p>
+						The triad is the difference. SIGHT, FORCE, and PULSE sit on the chart with the nine-timeframe
+						row. You are not reading a browser overlay and then retyping the trade.
+					</p>
+					<p>
+						LuxAlgo can still be the drawing tool. It is not the MetaTrader panel. If the ticket is on MT4
+						or MT5, that is the screen that should carry the grade.
+					</p>
+					<div class="cta-row">
+						<CtaButton class="btn-lg">Get the native MT4 dashboard →</CtaButton>
+					</div>
+				</div>
+				<figure class="shot">
+					<img src="/images/dashboard.webp" width="1080" height="1256" alt="Goldeneye triad and nine-timeframe row on a MetaTrader-style panel" />
+					<figcaption>The dashboard is the product. It does not live in Pine Script.</figcaption>
+				</figure>
+			</div>
+		</section>
+
+		<section class="band" id="faq">
+			<div class="container narrow">
+				<h2>Questions</h2>
+				<div class="faq-list">
+					{
+						faqs.map((faq, index) => (
+							<details name="lux-faq" open={index === 0}>
+								<summary>{faq.q}</summary>
+								<p>{faq.a}</p>
+							</details>
+						))
+					}
+				</div>
+				<div class="cta-row">
+					<CtaButton class="btn-lg">See Goldeneye on your MT4 chart →</CtaButton>
+				</div>
+				<p class="crosslinks">
+					<a href="/">Full <strong>review</strong> →</a>
+					<a href="/profit-goldeneye-pricing"><strong>Pricing</strong> →</a>
+					<a href="/profit-goldeneye-bonus"><strong>Bonuses</strong> →</a>
+				</p>
+			</div>
+		</section>
+
+		<section class="band">
+			<div class="container final-card">
+				<h2>Script there. Panel here.</h2>
+				<p>Use LuxAlgo if the browser is your desk. Use Goldeneye if MetaTrader is.</p>
+				<CtaButton class="btn-lg">Get Goldeneye 2.0 for $329 →</CtaButton>
+			</div>
+		</section>
+	</div>
+	<StickyBar />
+</BaseLayout>

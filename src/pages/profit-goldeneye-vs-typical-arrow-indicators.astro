@@ -1,0 +1,217 @@
+---
+import '../styles/article.css';
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Breadcrumbs from '../components/Breadcrumbs.astro';
+import CtaButton from '../components/CtaButton.astro';
+import StickyBar from '../components/StickyBar.astro';
+
+const title = 'Goldeneye 2.0 vs. Typical Arrow Indicators: Why Arrows Fail';
+const description =
+	'Typical arrow indicators print a signal and often redraw it later. Goldeneye 2.0 adds a 9-timeframe dashboard, the SIGHT/FORCE/PULSE triad, and Excellent, Good, and Standby grades.';
+const canonicalURL = 'https://profitgoldeneyereview.com/profit-goldeneye-vs-typical-arrow-indicators';
+const pageUrl = canonicalURL;
+
+const rows = [
+	{ feature: 'What you see', goldeneye: 'Grade plus dashboard', arrows: 'One arrow' },
+	{ feature: 'Timeframes', goldeneye: 'Nine in one panel', arrows: 'Only the open chart' },
+	{ feature: 'Context', goldeneye: 'SIGHT, FORCE, and PULSE', arrows: 'No context' },
+	{ feature: 'After a bad trade', goldeneye: 'Grade stays a claim to test live', arrows: 'Arrow often repaints or vanishes' },
+	{ feature: 'Price', goldeneye: '$329 once', arrows: 'Often about $30' },
+];
+
+const faqs = [
+	{
+		q: 'Why do arrow indicators fail?',
+		a: 'A lone arrow has no rank and no higher-timeframe context. Many of them also recalculate, so a signal that looked clean in history was not the signal you would have seen while the candle was still open.',
+	},
+	{
+		q: 'What does Goldeneye add that an arrow does not?',
+		a: 'A 9-timeframe row, three meters named SIGHT, FORCE, and PULSE, and a grade of EXCELLENT, GOOD, or STANDBY. You still decide the trade. You are no longer staring at a single mark.',
+	},
+	{
+		q: 'Does Goldeneye still draw arrows?',
+		a: 'The seller shows buy and sell marks on the chart. The difference is the panel around them: the grade and the nine timeframes. An arrow without that panel is the product this page is arguing against.',
+	},
+	{
+		q: 'Is the expensive dashboard worth it over a $30 arrow?',
+		a: 'Only if you will use the context. If you ignore STANDBY and the higher timeframes, you bought a costly arrow. If you use the grades to skip weak prints, the one-time $329 can replace a stack of cheap scripts.',
+	},
+];
+
+const schema = {
+	'@context': 'https://schema.org',
+	'@graph': [
+		{
+			'@type': 'ItemList',
+			name: 'Goldeneye 2.0 compared with typical arrow indicators',
+			itemListOrder: 'https://schema.org/ItemListUnordered',
+			numberOfItems: 2,
+			itemListElement: [
+				{
+					'@type': 'ListItem',
+					position: 1,
+					name: 'The Profit Goldeneye 2.0',
+					url: `${pageUrl}#goldeneye`,
+				},
+				{
+					'@type': 'ListItem',
+					position: 2,
+					name: 'Typical arrow indicators',
+					url: `${pageUrl}#arrows`,
+				},
+			],
+		},
+		{
+			'@type': 'FAQPage',
+			mainEntity: faqs.map((faq) => ({
+				'@type': 'Question',
+				name: faq.q,
+				acceptedAnswer: { '@type': 'Answer', text: faq.a },
+			})),
+		},
+	],
+};
+---
+
+<BaseLayout title={title} description={description} canonicalURL={canonicalURL} schema={schema}>
+	<div class="article-page">
+	<section class="hero">
+		<div class="container crumbs">
+			<Breadcrumbs
+				items={[
+					{ label: 'Home', href: '/' },
+					{ label: 'Vs arrow indicators', href: '/profit-goldeneye-vs-typical-arrow-indicators' },
+				]}
+			/>
+		</div>
+		<div class="container hero-copy">
+			<p class="kicker">Comparison</p>
+			<h1>Goldeneye 2.0 vs. Typical Arrow Indicators: Why Arrows Fail</h1>
+			<p class="lede">
+				A cheap indicator prints an arrow and leaves you alone with it. If the trade fails, that arrow often
+				repaints or disappears. Goldeneye is built to show the context around the signal.
+			</p>
+			<CtaButton class="btn-lg">Get Goldeneye 2.0 for $329 →</CtaButton>
+			<p class="crosslinks">
+				<a href="/">Read the <strong>Goldeneye 2.0 Review</strong> →</a>
+				<a href="/profit-goldeneye-pricing">See <strong>Goldeneye 2.0 Pricing</strong> →</a>
+				<a href="/profit-goldeneye-bonus">Claim the <strong>Exclusive Bonuses</strong> →</a>
+			</p>
+		</div>
+	</section>
+
+	<section class="band" id="arrows">
+		<div class="container narrow">
+			<h2>The problem with a lone arrow</h2>
+			<p>
+				Cheap indicators just print an arrow. If the trade goes wrong, the arrow repaints or disappears. The
+				history chart then looks smarter than the live chart you actually traded.
+			</p>
+			<p>
+				You also never learn why the arrow printed. There is no higher timeframe, no strength reading, and no
+				“wait” state. Every mark looks equally urgent.
+			</p>
+			<div class="cta-row">
+				<CtaButton class="btn-lg">Leave the lone arrows →</CtaButton>
+			</div>
+		</div>
+	</section>
+
+	<section class="band band-alt" id="goldeneye">
+		<div class="container narrow">
+			<h2>The Goldeneye difference</h2>
+			<p>
+				It doesn't just give an arrow. It gives a 9-timeframe dashboard, a Triad (SIGHT, FORCE, and PULSE), and
+				graded signals (Excellent, Good, Standby). It provides context, not just a signal.
+			</p>
+			<ul class="points">
+				<li><strong>SIGHT</strong> is direction. Which way the market is leaning.</li>
+				<li><strong>FORCE</strong> is strength. Whether the move has weight.</li>
+				<li><strong>PULSE</strong> is timing. Whether the push is fresh or tired.</li>
+			</ul>
+			<p>
+				EXCELLENT is the seller’s top grade. GOOD is worth a look. STANDBY means wait. You still place the
+				trade. You are no longer guessing which arrow mattered.
+			</p>
+			<div class="cta-row">
+				<CtaButton class="btn-lg">Get the dashboard, not another arrow →</CtaButton>
+			</div>
+		</div>
+	</section>
+
+	<section class="band" id="compare">
+		<div class="container">
+			<h2>Side by side</h2>
+			<div class="table-scroll">
+				<table class="compare">
+					<caption>Goldeneye 2.0 against a typical single-arrow indicator</caption>
+					<thead>
+						<tr>
+							<th scope="col">Feature</th>
+							<th class="hl" scope="col">Goldeneye 2.0</th>
+							<th scope="col">Typical arrows</th>
+						</tr>
+					</thead>
+					<tbody>
+						{
+							rows.map((row) => (
+								<tr>
+									<th scope="row">{row.feature}</th>
+									<td class="hl" data-label="Goldeneye 2.0">
+										{row.goldeneye}
+									</td>
+									<td data-label="Typical arrows">{row.arrows}</td>
+								</tr>
+							))
+						}
+					</tbody>
+				</table>
+			</div>
+			<div class="cta-row">
+				<CtaButton class="btn-lg">Get Goldeneye 2.0 for $329 →</CtaButton>
+			</div>
+		</div>
+	</section>
+
+	<section class="band band-alt">
+		<div class="container narrow">
+			<h2>Verdict</h2>
+			<p>Stop trading blind arrows. Use a dashboard.</p>
+			<p>
+				A $30 arrow is cheaper. It is also how traders end up defending a signal that is no longer on the chart.
+				Goldeneye’s $329 is the price of the panel, the grades, and the nine timeframes. Use them, or you
+				overpaid for a mark on a candle.
+			</p>
+			<div class="cta-row">
+				<CtaButton class="btn-lg">Trade with the panel →</CtaButton>
+			</div>
+		</div>
+	</section>
+
+	<section class="band" id="faq">
+		<div class="container narrow">
+			<h2>Questions</h2>
+			<div class="faq-list">
+				{
+					faqs.map((faq, index) => (
+						<details name="arrow-faq" open={index === 0}>
+							<summary>{faq.q}</summary>
+							<p>{faq.a}</p>
+						</details>
+					))
+				}
+			</div>
+			<div class="cta-row">
+				<CtaButton class="btn-lg">Get Goldeneye 2.0 for $329 →</CtaButton>
+			</div>
+			<p class="crosslinks">
+				<a href="/">Back to the <strong>review</strong> →</a>
+				<a href="/profit-goldeneye-pricing"><strong>Pricing</strong> breakdown →</a>
+				<a href="/profit-goldeneye-bonus"><strong>Bonuses</strong> after purchase →</a>
+			</p>
+		</div>
+	</section>
+
+	</div>
+	<StickyBar />
+</BaseLayout>

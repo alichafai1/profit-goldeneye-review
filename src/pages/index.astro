@@ -1,0 +1,978 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import CtaButton from '../components/CtaButton.astro';
+import StickyBar from '../components/StickyBar.astro';
+
+const title = 'The Profit Goldeneye 2.0 Review: The Ultimate MT4/MT5 Signal Indicator?';
+const description =
+	'Honest review of The Profit Goldeneye 2.0, a $329 MT4/MT5 indicator with a 9-timeframe dashboard, EXCELLENT/GOOD/STANDBY grades, and the SIGHT, FORCE, and PULSE triad.';
+
+const faqs = [
+	{
+		q: 'What is The Profit Goldeneye 2.0?',
+		a: 'The Profit Goldeneye 2.0 is a paid MetaTrader 4 and MetaTrader 5 indicator from Element Forex. It sits on your chart as a dashboard with nine timeframes, EXCELLENT / GOOD / STANDBY grades, and three live meters named SIGHT, FORCE, and PULSE. It is a way to read a setup. It is not a trade copier and it does not place orders for you.',
+	},
+	{
+		q: 'Is it an Expert Advisor (EA) or an Indicator?',
+		a: 'It is an indicator. The panel grades the chart, paints buy and sell marks, and can open a sound alert. It does not enter, manage, or close the trade. You still choose the entry, the stop, and the position size.',
+	},
+	{
+		q: 'Does it repaint?',
+		a: 'The sales page presents Goldeneye 2.0 as a live panel that updates with each tick. It does not publish a candle-by-candle non-repaint test. Treat “no repainting” as a claim to check, not as a settled fact. On a demo chart, mark an EXCELLENT signal and see whether it stays put after the next candles print.',
+	},
+	{
+		q: 'Which timeframes does it support?',
+		a: 'The dashboard shows nine timeframes in one row: M1, M5, M15, M30, H1, H4, D1, W1, and MN. Element Forex says it can run on symbols your MT4 or MT5 broker already offers, including forex pairs and gold.',
+	},
+	{
+		q: 'Is there a money-back guarantee?',
+		a: 'There is no open “change your mind” guarantee. Element Forex publishes a 7-day refund limited to two cases: an accidental double purchase, or a technical failure on their side that they confirm. Not liking the tool, not using it, or a losing trade is listed as non-refundable. Read that policy on the JVZoo checkout before you pay. If a refund is issued, the license key is deactivated.',
+	},
+	{
+		q: 'How do I claim the bonuses?',
+		a: 'The indicator download and license key come from the seller by email after checkout. The extra bonuses attached to this review are separate from that download. After you buy, use the bonus page and keep your receipt so the claim can be matched to the order.',
+	},
+];
+
+const schema = {
+	'@context': 'https://schema.org',
+	'@graph': [
+		{
+			'@type': 'Product',
+			name: 'The Profit Goldeneye 2.0',
+			description:
+				'MT4 and MT5 signal indicator with a 9-timeframe dashboard, graded EXCELLENT, GOOD, and STANDBY signals, and SIGHT, FORCE, and PULSE meters.',
+			image: [
+				'https://profitgoldeneyereview.com/images/dashboard.webp',
+				'https://profitgoldeneyereview.com/images/nine-timeframes.webp',
+				'https://profitgoldeneyereview.com/images/triad.webp',
+			],
+			brand: {
+				'@type': 'Brand',
+				name: 'Element Forex',
+			},
+			category: 'Forex trading indicator',
+			offers: {
+				'@type': 'Offer',
+				price: '329',
+				priceCurrency: 'USD',
+				availability: 'https://schema.org/InStock',
+				url: 'https://jvz8.com/c/3639697/458096/',
+			},
+			aggregateRating: {
+				'@type': 'AggregateRating',
+				ratingValue: '4.7',
+				bestRating: '5',
+				worstRating: '1',
+				ratingCount: '1',
+				reviewCount: '1',
+			},
+			review: {
+				'@type': 'Review',
+				name: title,
+				author: {
+					'@type': 'Organization',
+					name: 'GoldeneyeReview',
+				},
+				reviewRating: {
+					'@type': 'Rating',
+					ratingValue: '4.7',
+					bestRating: '5',
+					worstRating: '1',
+				},
+			},
+		},
+		{
+			'@type': 'FAQPage',
+			mainEntity: faqs.map((faq) => ({
+				'@type': 'Question',
+				name: faq.q,
+				acceptedAnswer: {
+					'@type': 'Answer',
+					text: faq.a,
+				},
+			})),
+		},
+	],
+};
+
+const problems = [
+	'You switch between M5, H1, and H4, trying to find a trend that aligns.',
+	'Your indicator repaints, giving you a signal that looks perfect in hindsight but fails live.',
+	"You get overwhelmed by too many arrows and don't know which one to trust.",
+];
+
+const pros = [
+	'One dashboard instead of a pile of oscillators fighting each other.',
+	'Nine timeframes, M1 through monthly, without changing charts.',
+	'Pop-up sound alerts so you are not glued to the screen.',
+	'Non-repainting behavior, as claimed by the seller. Confirm it on demo before you size up.',
+];
+
+const cons = [
+	'The upfront price is $329. That is real money for an indicator.',
+	'You need a working grasp of MT4 or MT5. This is not a phone-app shortcut.',
+	'It is not an automated robot. You still decide whether to take the trade.',
+];
+
+const traders = [
+	{
+		title: 'Scalpers',
+		kicker: 'M1 / M5',
+		copy: 'Use the M1/M5 signals for quick entries. The short-term cells and the alert window are the parts of the panel that match a fast chart. A grade does not replace a tight invalidation level.',
+	},
+	{
+		title: 'Day Traders',
+		kicker: 'M15 / H1',
+		copy: 'Use M15/H1 to catch intraday momentum. Line the intraday signal up with H4 before you click, so you are not fading the move that actually matters today.',
+	},
+	{
+		title: 'Swing Traders',
+		kicker: 'H4 / D1',
+		copy: 'Use H4/D1 to ride the bigger trends. The daily and weekly cells tell you the tide. They do not tell you where your stop belongs.',
+	},
+];
+---
+
+<BaseLayout title={title} description={description} ogImage="/images/dashboard.webp" schema={schema}>
+	<section class="hero" id="review">
+		<div class="container hero-copy">
+			<p class="kicker">MT4 / MT5 indicator review</p>
+			<h1>The Profit Goldeneye 2.0 Review: The Ultimate MT4/MT5 Signal Indicator?</h1>
+			<p class="lede">
+				Stop jumping between timeframes and guessing which signal is real. Goldeneye 2.0 gives you a
+				9-timeframe dashboard, graded signals, and the exclusive Triad system. Here is my full breakdown.
+			</p>
+			<p class="disclosure">
+				This review contains affiliate links. If you buy through them, I may earn a commission at no extra
+				cost to you.
+			</p>
+			<CtaButton class="btn-lg">Get Goldeneye 2.0 + My Bonuses →</CtaButton>
+		</div>
+		<div class="container watch">
+			<div class="video-frame">
+				<span class="play" aria-hidden="true">
+					<svg viewBox="0 0 24 24" width="22" height="22">
+						<path d="M8.2 5.4v13.2L19 12 8.2 5.4z" fill="currentColor"></path>
+					</svg>
+				</span>
+				<p>Watch Goldeneye 2.0 in Action</p>
+			</div>
+		</div>
+	</section>
+
+	<div class="container verdict-wrap">
+		<aside class="verdict" id="verdict" aria-label="Quick verdict">
+			<div class="score-block">
+				<p class="score">4.7<span>/5</span></p>
+				<p class="stars" aria-hidden="true">
+					<span>★</span><span>★</span><span>★</span><span>★</span><span class="partial">★</span>
+				</p>
+			</div>
+			<div>
+				<p class="verdict-copy">
+					Best for: Scalpers, Day Traders, and Swing Traders who want visual confirmation.
+				</p>
+				<p class="verdict-note">
+					Verdict: This isn't a cheap 'magic arrow' indicator. It's a professional dashboard that helps you
+					read the market's momentum across all timeframes.
+				</p>
+			</div>
+		</aside>
+	</div>
+
+	<section class="band" id="problem">
+		<div class="container narrow">
+			<h2>Why Most Forex Indicators Fail You</h2>
+			<p class="section-lead">
+				Most traders do not lose because they lack another arrow. They lose because the chart asks them to
+				hold five opinions at once, and one of those opinions quietly changes after the candle closes.
+			</p>
+			<ul class="pain-list">
+				{
+					problems.map((item) => (
+						<li>
+							<svg viewBox="0 0 24 24" aria-hidden="true">
+								<path d="M6 6l12 12M18 6L6 18" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" />
+							</svg>
+							<span>{item}</span>
+						</li>
+					))
+				}
+			</ul>
+			<p class="solve">Goldeneye 2.0 solves this by grading the signals for you.</p>
+			<p class="section-lead">
+				A grade is only useful if it is still there while the market is live. That is the standard I would
+				hold this panel to, and the standard you should hold it to on a demo account.
+			</p>
+			<div class="cta-row">
+				<CtaButton class="btn-lg">Get the graded dashboard →</CtaButton>
+			</div>
+		</div>
+	</section>
+
+	<section class="band band-alt" id="features">
+		<div class="container">
+			<h2>What Makes The Profit Goldeneye 2.0 Different?</h2>
+			<p class="section-lead intro">
+				The seller’s page shows a dark terminal panel, not a rainbow of moving averages. Three pieces do the
+				work: the Triad meters, the 9-timeframe row, and a grade that tells you whether the setup is worth a
+				look. The screenshots below are from that page. The numbers on them are illustrations, not a track
+				record.
+			</p>
+
+			<article class="feature">
+				<div>
+					<p class="kicker">Feature 1</p>
+					<h3>The Triad: SIGHT, FORCE, and PULSE</h3>
+					<p>
+						SIGHT is the direction meter. It is there to show which way the market is leaning, so you are
+						not buying a chart that is already leaning the other way.
+					</p>
+					<p>
+						FORCE is the strength meter. A drift and a real push can look similar on a candle. FORCE is
+						the seller’s attempt to separate a move that has weight from one that is about to fade.
+					</p>
+					<p>
+						PULSE is the timing meter. It is meant to show whether the move is fresh or already tired.
+						The sales page scores each meter from 0 to 100 and says the best signals print when all three
+						run hot together.
+					</p>
+					<p>
+						Read that as a filter, not a promise. Three strong readings can still be a late entry. The
+						panel can agree with itself and still be wrong about the next candle.
+					</p>
+				</div>
+				<figure>
+					<img
+						src="/images/triad.webp"
+						width="1060"
+						height="749"
+						alt="Goldeneye 2.0 signal card showing SIGHT, FORCE, and PULSE meters with an Excellent Sell grade"
+					/>
+					<figcaption>Seller graphic of the Triad meters and the Excellent / Good / Standby lamps.</figcaption>
+				</figure>
+			</article>
+
+			<article class="feature feature-flip">
+				<div>
+					<p class="kicker">Feature 2</p>
+					<h3>The 9-Timeframe Eye</h3>
+					<p>
+						The top row of the panel is M1, M5, M15, M30, H1, H4, D1, W1, and MN. Each cell shows a
+						direction and how many bars that direction has held. The timeframe of the chart you are on is
+						highlighted, so you can see the ladder without opening eight more charts.
+					</p>
+					<p>
+						This is the direct answer to analysis paralysis. You stop asking “what is H4 doing?” by
+						clicking through timeframes, and you read it in the same glance as the signal. The bar count
+						is context. It is not a reason to ignore news, a level, or your own stop.
+					</p>
+				</div>
+				<figure>
+					<img
+						src="/images/dashboard.webp"
+						width="1080"
+						height="1256"
+						alt="The Profit Goldeneye 2.0 dashboard with the nine-timeframe row from M1 to monthly on XAUUSD M5"
+					/>
+					<figcaption>Dashboard close-up. The M1-to-MN row is the 9-timeframe eye.</figcaption>
+				</figure>
+			</article>
+
+			<article class="feature feature-stack">
+				<div>
+					<p class="kicker">Feature 3</p>
+					<h3>Graded Signals: EXCELLENT, GOOD, STANDBY</h3>
+					<p>
+						EXCELLENT is the seller’s top grade, described as the Triad fully lined up. GOOD is a setup
+						they say is worth watching. STANDBY means there is no quality setup yet, so the honest
+						instruction is to wait.
+					</p>
+					<p>
+						That grading is the difference between this and a cheap arrow indicator. Arrows without a
+						rank force you to treat every print as equal. A STANDBY state is only valuable if you
+						actually skip it. The grade does not size the trade or place the stop.
+					</p>
+				</div>
+				<figure>
+					<img
+						src="/images/nine-timeframes.webp"
+						width="2482"
+						height="1448"
+						alt="Goldeneye 2.0 panel on an EURUSD H1 MetaTrader chart showing all nine timeframes and an Excellent Buy grade"
+					/>
+					<figcaption>
+						Seller screenshot of the panel on EURUSD H1 in MetaTrader. Marks on the chart are illustrative.
+					</figcaption>
+				</figure>
+			</article>
+
+			<div class="cta-row">
+				<CtaButton class="btn-lg">Get Goldeneye 2.0 + My Bonuses →</CtaButton>
+			</div>
+		</div>
+	</section>
+
+	<section class="band" id="pricing">
+		<div class="container price-layout">
+			<div>
+				<h2>Is Goldeneye 2.0 Worth $329?</h2>
+				<p>
+					The checkout price is $329, once. Element Forex lists the MT4 and MT5 indicator, the license key,
+					the alert window, and an install guide in that payment. There is no monthly fee on the sales page.
+				</p>
+				<p>
+					Put that next to the tools that bill $50 to $100 every month. Those cost $600 to $1,200 over a
+					year if you keep them. If Goldeneye is still the panel you actually use after month seven, the
+					one-time price is the cheaper invoice.
+				</p>
+				<p id="alternatives">
+					The “one bad trade pays for it” line is only true in a narrow case: you were about to take a
+					trade, the panel kept you out, and that trade would have cost you $329 or more. It will not refund
+					a loss, and it will not make the next EXCELLENT signal a winner. Size the position as if the tool
+					can be wrong, because it can.
+				</p>
+			</div>
+			<div class="price-card">
+				<p class="price-label">One-time access</p>
+				<p class="price">$329</p>
+				<ul>
+					<li>MT4 and MT5 indicator</li>
+					<li>9-timeframe dashboard</li>
+					<li>SIGHT, FORCE, and PULSE</li>
+					<li>Graded signals and alerts</li>
+					<li>No monthly subscription</li>
+				</ul>
+				<CtaButton class="btn-lg">Lock in Your Access for $329 →</CtaButton>
+			</div>
+		</div>
+	</section>
+
+	<section class="band band-alt" id="pros">
+		<div class="container">
+			<h2>Pros and Cons</h2>
+			<p class="section-lead intro">
+				A 4.7 score is not a claim that every signal wins. It is a score for the clarity of the tool, with
+				the price and the manual decision still on the other side of the ledger.
+			</p>
+			<div class="split">
+				<article class="panel pro">
+					<h3>Pros</h3>
+					<ul>
+						{
+							pros.map((item) => (
+								<li>
+									<svg viewBox="0 0 24 24" aria-hidden="true">
+										<path d="M5 12.5l4.2 4.2L19 7.2" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" />
+									</svg>
+									<span>{item}</span>
+								</li>
+							))
+						}
+					</ul>
+				</article>
+				<article class="panel con">
+					<h3>Cons</h3>
+					<ul>
+						{
+							cons.map((item) => (
+								<li>
+									<svg viewBox="0 0 24 24" aria-hidden="true">
+										<path d="M6 6l12 12M18 6L6 18" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" />
+									</svg>
+									<span>{item}</span>
+								</li>
+							))
+						}
+					</ul>
+				</article>
+			</div>
+			<div class="cta-row">
+				<CtaButton class="btn-lg">See the $329 checkout →</CtaButton>
+			</div>
+		</div>
+	</section>
+
+	<section class="band" id="who">
+		<div class="container">
+			<h2>Who Is This For?</h2>
+			<p class="section-lead intro">
+				The same panel serves three speeds of trading. The difference is which cells you treat as the
+				decision and which cells you treat as the backdrop.
+			</p>
+			<div class="who-grid">
+				{
+					traders.map((trader) => (
+						<article>
+							<p class="kicker">{trader.kicker}</p>
+							<h3>{trader.title}</h3>
+							<p>{trader.copy}</p>
+						</article>
+					))
+				}
+			</div>
+			<div class="cta-row">
+				<CtaButton class="btn-lg">Get Goldeneye 2.0 for your timeframe →</CtaButton>
+			</div>
+		</div>
+	</section>
+
+	<section class="band band-alt" id="faq">
+		<div class="container narrow">
+			<h2>FAQ</h2>
+			<div class="faq-list">
+				{
+					faqs.map((faq, index) => (
+						<details name="goldeneye-faq" open={index === 0}>
+							<summary>{faq.q}</summary>
+							<p>{faq.a}</p>
+						</details>
+					))
+				}
+			</div>
+			<div class="cta-row">
+				<CtaButton class="btn-lg">Get Goldeneye 2.0 + My Bonuses →</CtaButton>
+			</div>
+		</div>
+	</section>
+
+	<section class="final" id="bonuses">
+		<div class="container final-inner">
+			<h2>The Final Verdict</h2>
+			<p>
+				Goldeneye 2.0 is a premium dashboard for traders who are tired of guessing which arrow matters. The
+				9-timeframe row, the SIGHT / FORCE / PULSE meters, and the EXCELLENT, GOOD, and STANDBY grades give
+				a chaotic chart one place to look. That clarity is the product.
+			</p>
+			<p>
+				It is not a magic button, and it is not cheap. You still make the trade, the refund policy is narrow,
+				and the non-repaint claim belongs on a demo chart before it belongs in a live account. If you want
+				that kind of panel and you already know your way around MetaTrader, the $329 one-time price is
+				justified by what it replaces. If you want a robot to trade for you, this is the wrong page.
+			</p>
+			<CtaButton class="btn-lg">Get Goldeneye 2.0 + Claim Your Bonuses →</CtaButton>
+			<p class="bonus-link">
+				<a href="/profit-goldeneye-bonus">Learn more about my exclusive bonuses →</a>
+			</p>
+		</div>
+	</section>
+
+	<StickyBar />
+</BaseLayout>
+
+<style>
+	.kicker {
+		margin: 0 0 0.85rem;
+		color: var(--color-primary);
+		font-size: 0.78rem;
+		font-weight: 700;
+		letter-spacing: 0.14em;
+		text-transform: uppercase;
+	}
+
+	h2 {
+		margin: 0;
+		font-size: clamp(1.9rem, 4vw, 2.7rem);
+	}
+
+	h3 {
+		margin: 0;
+		font-size: clamp(1.35rem, 2vw, 1.7rem);
+	}
+
+	.section-lead {
+		max-width: 44rem;
+		margin-top: 1rem;
+		color: var(--color-text-light);
+		font-size: 1.05rem;
+	}
+
+	.intro {
+		margin-bottom: 2rem;
+	}
+
+	.cta-row {
+		margin-top: 1.75rem;
+	}
+
+	.hero {
+		position: relative;
+		padding: 4.75rem 0 6.5rem;
+		background:
+			radial-gradient(ellipse 70% 55% at 50% -8%, rgba(212, 175, 55, 0.18), transparent 58%),
+			linear-gradient(180deg, var(--color-bg-alt) 0%, var(--color-bg) 78%);
+		overflow: hidden;
+	}
+
+	.hero::before {
+		content: '';
+		position: absolute;
+		inset: 0;
+		background-image:
+			linear-gradient(rgba(248, 250, 252, 0.035) 1px, transparent 1px),
+			linear-gradient(90deg, rgba(248, 250, 252, 0.035) 1px, transparent 1px);
+		background-size: 72px 72px;
+		mask-image: linear-gradient(180deg, #000 20%, transparent 85%);
+		pointer-events: none;
+	}
+
+	.hero-copy,
+	.watch {
+		position: relative;
+		text-align: center;
+	}
+
+	h1 {
+		max-width: 16em;
+		margin-inline: auto;
+		font-size: clamp(2.15rem, 5vw, 3.7rem);
+	}
+
+	.lede {
+		max-width: 42rem;
+		margin: 1.15rem auto 0;
+		color: var(--color-text-light);
+		font-size: 1.15rem;
+	}
+
+	.disclosure {
+		max-width: 38rem;
+		margin: 1rem auto 0;
+		color: var(--color-text-light);
+		font-size: 0.82rem;
+	}
+
+	.hero-copy :global(.btn) {
+		margin-top: 1.5rem;
+	}
+
+	.watch {
+		margin-top: 2.25rem;
+	}
+
+	.video-frame {
+		display: grid;
+		align-content: center;
+		justify-items: center;
+		gap: 1rem;
+		width: min(100%, 760px);
+		margin-inline: auto;
+		aspect-ratio: 16 / 9;
+		padding: 1.5rem;
+		background:
+			radial-gradient(circle at 50% 42%, rgba(212, 175, 55, 0.12), transparent 36%),
+			var(--color-bg-alt);
+		border: 1px solid var(--color-border);
+		border-radius: var(--radius-lg);
+	}
+
+	.play {
+		display: grid;
+		place-items: center;
+		width: 4.5rem;
+		height: 4.5rem;
+		border-radius: 50%;
+		background: var(--color-primary);
+		color: var(--color-bg);
+		box-shadow: var(--shadow-glow);
+	}
+
+	.video-frame p {
+		font-family: var(--font-display);
+		font-size: clamp(1.2rem, 2vw, 1.7rem);
+		font-weight: 600;
+		letter-spacing: -0.03em;
+	}
+
+	.verdict-wrap {
+		position: relative;
+		z-index: 2;
+		margin-top: -3.3rem;
+	}
+
+	.verdict {
+		display: flex;
+		gap: 1.4rem 1.8rem;
+		align-items: center;
+		padding: 1.25rem 1.4rem;
+		background: var(--color-bg-alt);
+		border: 1px solid var(--color-primary);
+		border-radius: var(--radius-lg);
+		box-shadow: var(--shadow-glow);
+	}
+
+	.score {
+		font-family: var(--font-display);
+		font-size: 2.6rem;
+		font-weight: 700;
+		letter-spacing: -0.04em;
+		line-height: 1;
+	}
+
+	.score span {
+		margin-left: 0.1rem;
+		color: var(--color-text-light);
+		font-size: 1.1rem;
+		font-weight: 500;
+	}
+
+	.stars {
+		display: inline-flex;
+		gap: 0.14rem;
+		margin-top: 0.4rem;
+		color: var(--color-primary);
+		line-height: 1;
+	}
+
+	.partial {
+		position: relative;
+		display: inline-block;
+		color: #334155;
+	}
+
+	.partial::before {
+		content: '★';
+		position: absolute;
+		inset: 0 auto 0 0;
+		width: 70%;
+		overflow: hidden;
+		color: var(--color-primary);
+	}
+
+	.verdict-copy {
+		font-size: 1.05rem;
+	}
+
+	.verdict-note {
+		margin-top: 0.45rem;
+		color: var(--color-text-light);
+	}
+
+	.band {
+		padding: 4.5rem 0;
+	}
+
+	.band-alt {
+		background: linear-gradient(180deg, rgba(19, 27, 42, 0.65), rgba(11, 15, 25, 0));
+	}
+
+	.narrow {
+		max-width: 820px;
+	}
+
+	.pain-list,
+	.panel ul,
+	.price-card ul {
+		display: grid;
+		gap: 0.85rem;
+		margin: 1.4rem 0 0;
+		padding: 0;
+		list-style: none;
+	}
+
+	.pain-list li,
+	.panel li {
+		display: flex;
+		gap: 0.75rem;
+		align-items: flex-start;
+	}
+
+	.pain-list svg,
+	.panel svg {
+		flex: none;
+		width: 1.35rem;
+		height: 1.35rem;
+		margin-top: 0.15rem;
+	}
+
+	.pain-list svg,
+	.con svg {
+		color: var(--color-danger);
+	}
+
+	.pro svg {
+		color: var(--color-success);
+	}
+
+	.solve {
+		margin-top: 1.5rem;
+		font-family: var(--font-display);
+		font-size: 1.35rem;
+		font-weight: 600;
+	}
+
+	.feature {
+		display: grid;
+		grid-template-columns: 1.1fr 0.9fr;
+		gap: 2rem;
+		align-items: center;
+		margin-top: 2.5rem;
+	}
+
+	.feature-flip {
+		grid-template-columns: 0.9fr 1.1fr;
+	}
+
+	.feature-flip figure {
+		order: -1;
+	}
+
+	.feature-stack {
+		grid-template-columns: 1fr;
+	}
+
+	.feature p + p {
+		margin-top: 0.85rem;
+	}
+
+	.feature h3 {
+		margin-bottom: 0.8rem;
+	}
+
+	figure {
+		margin: 0;
+		overflow: hidden;
+		background: #070b12;
+		border: 1px solid var(--color-border);
+		border-radius: var(--radius-lg);
+	}
+
+	img {
+		width: 100%;
+		height: auto;
+	}
+
+	figcaption {
+		padding: 0.75rem 1rem 0.9rem;
+		color: var(--color-text-light);
+		font-size: 0.8rem;
+	}
+
+	.price-layout {
+		display: grid;
+		grid-template-columns: 1.2fr 0.8fr;
+		gap: 2rem;
+		align-items: start;
+	}
+
+	.price-layout p + p {
+		margin-top: 0.9rem;
+		color: var(--color-text-light);
+	}
+
+	.price-card {
+		padding: 1.5rem;
+		background: var(--color-bg-alt);
+		border: 1px solid var(--color-primary);
+		border-radius: var(--radius-lg);
+		box-shadow: var(--shadow-glow);
+	}
+
+	.price-label {
+		color: var(--color-primary);
+		font-size: 0.78rem;
+		font-weight: 700;
+		letter-spacing: 0.12em;
+		text-transform: uppercase;
+	}
+
+	.price {
+		margin: 0.3rem 0 0.4rem;
+		font-family: var(--font-display);
+		font-size: 3.4rem;
+		font-weight: 700;
+		letter-spacing: -0.04em;
+		line-height: 1;
+	}
+
+	.price-card li {
+		position: relative;
+		padding-left: 1.1rem;
+		color: var(--color-text-light);
+	}
+
+	.price-card li::before {
+		content: '';
+		position: absolute;
+		top: 0.55rem;
+		left: 0;
+		width: 0.4rem;
+		height: 0.4rem;
+		border-radius: 50%;
+		background: var(--color-primary);
+	}
+
+	.price-card :global(.btn) {
+		width: 100%;
+		margin-top: 1.25rem;
+	}
+
+	.split {
+		display: grid;
+		grid-template-columns: 1fr 1fr;
+		gap: 1rem;
+	}
+
+	.panel {
+		padding: 1.35rem 1.3rem 1.5rem;
+		background: var(--color-bg-alt);
+		border: 1px solid var(--color-border);
+		border-radius: var(--radius-lg);
+	}
+
+	.pro {
+		border-color: rgba(0, 200, 83, 0.45);
+	}
+
+	.con {
+		border-color: rgba(255, 61, 0, 0.4);
+	}
+
+	.panel h3 {
+		margin-bottom: 0.35rem;
+	}
+
+	.who-grid {
+		display: grid;
+		grid-template-columns: repeat(3, minmax(0, 1fr));
+		gap: 1rem;
+	}
+
+	.who-grid article {
+		padding: 1.35rem 1.25rem 1.5rem;
+		background: var(--color-bg-alt);
+		border: 1px solid var(--color-border);
+		border-radius: var(--radius-lg);
+	}
+
+	.who-grid h3 {
+		margin-bottom: 0.65rem;
+	}
+
+	.who-grid p:last-child {
+		color: var(--color-text-light);
+	}
+
+	.faq-list {
+		display: grid;
+		gap: 0.7rem;
+		margin-top: 1.4rem;
+	}
+
+	details {
+		background: var(--color-bg-alt);
+		border: 1px solid var(--color-border);
+		border-radius: var(--radius-md);
+	}
+
+	details[open] {
+		border-color: var(--color-primary);
+	}
+
+	summary {
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+		gap: 1rem;
+		padding: 1rem 1.1rem;
+		font-family: var(--font-display);
+		font-weight: 600;
+		cursor: pointer;
+		list-style: none;
+	}
+
+	summary::-webkit-details-marker {
+		display: none;
+	}
+
+	summary::after {
+		content: '+';
+		color: var(--color-primary);
+		font-size: 1.3rem;
+		line-height: 1;
+	}
+
+	details[open] summary::after {
+		content: '–';
+	}
+
+	details p {
+		padding: 0 1.1rem 1.05rem;
+		color: var(--color-text-light);
+	}
+
+	.final {
+		padding: 4.5rem 0 1rem;
+	}
+
+	.final-inner {
+		max-width: 820px;
+		padding: 2rem 1.4rem 2.2rem;
+		text-align: center;
+		background:
+			radial-gradient(ellipse at top, rgba(212, 175, 55, 0.16), transparent 55%),
+			var(--color-bg-alt);
+		border: 1px solid var(--color-primary);
+		border-radius: var(--radius-lg);
+		box-shadow: var(--shadow-glow);
+	}
+
+	.final p {
+		margin-top: 0.9rem;
+		color: var(--color-text-light);
+	}
+
+	.final :global(.btn) {
+		margin-top: 1.5rem;
+	}
+
+	.bonus-link {
+		margin-top: 1rem;
+	}
+
+	.bonus-link a {
+		color: var(--color-primary);
+		font-size: 0.95rem;
+	}
+
+	#review,
+	#verdict,
+	#problem,
+	#features,
+	#pricing,
+	#alternatives,
+	#pros,
+	#who,
+	#faq,
+	#bonuses {
+		scroll-margin-top: 5.5rem;
+	}
+
+	@media (max-width: 860px) {
+		.verdict,
+		.feature,
+		.feature-flip,
+		.price-layout,
+		.split,
+		.who-grid {
+			grid-template-columns: 1fr;
+			flex-direction: column;
+			align-items: stretch;
+		}
+
+		.feature-flip figure {
+			order: 0;
+		}
+
+		.score-block {
+			display: flex;
+			gap: 0.8rem;
+			align-items: center;
+		}
+
+		.stars {
+			margin-top: 0;
+		}
+	}
+</style>

@@ -1,0 +1,192 @@
+---
+import '../styles/landing.css';
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Breadcrumbs from '../components/Breadcrumbs.astro';
+import CtaButton from '../components/CtaButton.astro';
+import StickyBar from '../components/StickyBar.astro';
+
+const title = 'Best Forex Indicators for Beginners in 2026 (Simple & Visual)';
+const description =
+	'Beginners do not need ten arrows. This 2026 list starts with Goldeneye 2.0 because the grade says EXCELLENT, GOOD, or STANDBY, then Bollinger Bands and support and resistance.';
+const canonicalURL = 'https://profitgoldeneyereview.com/best-forex-indicators-for-beginners';
+
+const ranks = [
+	{
+		id: 'goldeneye',
+		place: '#1',
+		name: 'Goldeneye 2.0',
+		fit: 'A grade you can read',
+		top: true,
+		copy: 'The panel says EXCELLENT, GOOD, or STANDBY. That is the whole point for a new trader who is drowning in RSI, MACD, and Ichimoku. You still need MT4 or MT5, and you still place the trade. The guesswork of “which arrow?” is what the grade removes.',
+	},
+	{
+		id: 'bollinger',
+		place: '#2',
+		name: 'Bollinger Bands',
+		fit: 'A free picture of stretch',
+		top: false,
+		copy: 'Three lines. Price in the middle is ordinary. Price at the outer band is stretched. It does not say buy or sell. It shows you where price is relative to its recent range.',
+	},
+	{
+		id: 'levels',
+		place: '#3',
+		name: 'Support and resistance',
+		fit: 'The chart, unmarked',
+		top: false,
+		copy: 'Horizontal levels you draw and leave alone. No formula, no repaint, no grade. This is the skill underneath every indicator. Learn it even if you also use a panel.',
+	},
+];
+
+const faqs = [
+	{
+		q: 'Should a beginner start with Ichimoku or MACD?',
+		a: 'Not as the first screen. Those tools stack lines until the price is hard to see. Start with levels, or with a panel that prints one grade, and add oscillators later when you know what you are adding.',
+	},
+	{
+		q: 'Is EXCELLENT a guaranteed win?',
+		a: 'No. It is the seller’s top grade, meaning the triad lines up. Beginners lose accounts by treating a word on a chart as permission to risk too much. One percent, and a stop, still apply.',
+	},
+	{
+		q: 'Do I need to know MetaTrader first?',
+		a: 'Yes. Goldeneye is installed on MT4 or MT5. If you have never opened a chart, learn the platform on a demo, then add the panel. The install guide on this site walks through the folders.',
+	},
+];
+
+const schema = {
+	'@context': 'https://schema.org',
+	'@graph': [
+		{
+			'@type': 'ItemList',
+			name: 'Simple forex indicators for beginners in 2026',
+			itemListOrder: 'https://schema.org/ItemListOrderAscending',
+			numberOfItems: ranks.length,
+			itemListElement: ranks.map((rank, index) => ({
+				'@type': 'ListItem',
+				position: index + 1,
+				name: rank.name,
+				url: `${canonicalURL}#${rank.id}`,
+			})),
+		},
+		{
+			'@type': 'FAQPage',
+			mainEntity: faqs.map((faq) => ({
+				'@type': 'Question',
+				name: faq.q,
+				acceptedAnswer: { '@type': 'Answer', text: faq.a },
+			})),
+		},
+	],
+};
+---
+
+<BaseLayout title={title} description={description} canonicalURL={canonicalURL} schema={schema}>
+	<div class="landing">
+		<section class="hero">
+			<div class="container crumbs">
+				<Breadcrumbs
+					items={[
+						{ label: 'Home', href: '/' },
+						{ label: 'For beginners', href: '/best-forex-indicators-for-beginners' },
+					]}
+				/>
+			</div>
+			<div class="container hero-grid">
+				<div class="hero-copy">
+					<p class="kicker">Simple and visual</p>
+					<h1>Best Forex Indicators for Beginners</h1>
+					<p class="lede">
+						Most indicators are a pile of lines. A new trader does not need ten arrows. They need one
+						picture that says whether the setup is worth a look.
+					</p>
+					<CtaButton class="btn-lg">Get the Beginner-Friendly Dashboard →</CtaButton>
+					<p class="crosslinks">
+						<a href="/">Read the <strong>Goldeneye 2.0 Review</strong> →</a>
+						<a href="/profit-goldeneye-pricing">See <strong>Pricing</strong> →</a>
+						<a href="/profit-goldeneye-bonus">Claim the <strong>Bonuses</strong> →</a>
+					</p>
+				</div>
+				<figure class="shot">
+					<img
+						src="/images/triad.webp"
+						width="1060"
+						height="749"
+						alt="Goldeneye grade lamp showing Excellent, Good, and Standby on one card"
+					/>
+					<figcaption>The grade is a word, not a stack of oscillators.</figcaption>
+				</figure>
+			</div>
+		</section>
+
+		<section class="band">
+			<div class="container narrow">
+				<h2>Too many tools, no decision</h2>
+				<div class="problem">
+					<p>
+						Beginners open RSI, MACD, Ichimoku, and a folder of arrows. The chart fills up. The decision
+						does not.
+					</p>
+					<p class="highlight">If you cannot say the setup in one sentence, you are not ready to click it.</p>
+				</div>
+				<div class="cta-row">
+					<CtaButton class="btn-lg">Start with one grade →</CtaButton>
+				</div>
+			</div>
+		</section>
+
+		<section class="band band-alt">
+			<div class="container">
+				<h2>Three tools, in the order to learn them</h2>
+				<div class="rank-list">
+					{
+						ranks.map((rank) => (
+							<article class:list={['rank', rank.top && 'rank-top']} id={rank.id}>
+								<p class="place">{rank.place} · {rank.fit}</p>
+								<h3>{rank.name}</h3>
+								<p>{rank.copy}</p>
+								{rank.top && (
+									<div class="cta-row">
+										<CtaButton class="btn-lg">Get the Beginner-Friendly Dashboard →</CtaButton>
+									</div>
+								)}
+							</article>
+						))
+					}
+				</div>
+			</div>
+		</section>
+
+		<section class="band" id="faq">
+			<div class="container narrow">
+				<h2>Beginner questions</h2>
+				<div class="faq-list">
+					{
+						faqs.map((faq, index) => (
+							<details name="beginner-faq" open={index === 0}>
+								<summary>{faq.q}</summary>
+								<p>{faq.a}</p>
+							</details>
+						))
+					}
+				</div>
+				<div class="cta-row">
+					<CtaButton class="btn-lg">Read EXCELLENT, GOOD, or STANDBY →</CtaButton>
+				</div>
+				<p class="crosslinks">
+					<a href="/">Full <strong>review</strong> →</a>
+					<a href="/profit-goldeneye-pricing"><strong>Pricing</strong> →</a>
+					<a href="/profit-goldeneye-bonus"><strong>Bonuses</strong> →</a>
+					<a href="/how-to-install-mt4-mt5-indicator">How to <strong>install</strong> it →</a>
+				</p>
+			</div>
+		</section>
+
+		<section class="band">
+			<div class="container final-card">
+				<h2>One word on the chart</h2>
+				<p>Learn levels. Then let a grade tell you if the panel thinks the setup is worth your attention.</p>
+				<CtaButton class="btn-lg">Get Goldeneye 2.0 for $329 →</CtaButton>
+			</div>
+		</section>
+	</div>
+	<StickyBar />
+</BaseLayout>

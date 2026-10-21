@@ -1,0 +1,14 @@
+---
+import { offerRel, offerUrl } from '../data/offer';
+
+interface Props {
+	class?: string;
+	id?: string;
+}
+
+const { class: className, id } = Astro.props;
+---
+
+<a id={id} class:list={['btn', className]} href={offerUrl} target="_blank" rel={offerRel}>
+	<slot />
+</a>

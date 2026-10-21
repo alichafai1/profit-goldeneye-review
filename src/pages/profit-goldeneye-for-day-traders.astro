@@ -1,0 +1,217 @@
+---
+import '../styles/landing.css';
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Breadcrumbs from '../components/Breadcrumbs.astro';
+import CtaButton from '../components/CtaButton.astro';
+import StickyBar from '../components/StickyBar.astro';
+
+const title = 'The Profit Goldeneye 2.0 for Day Traders: Intraday Clarity';
+const description =
+	'Goldeneye 2.0 for day traders: line up M15 and H1 with the rest of the dashboard so London and New York fakeouts are easier to skip. One-time $329 on MT4 and MT5.';
+const canonicalURL = 'https://profitgoldeneyereview.com/profit-goldeneye-for-day-traders';
+
+const checks = [
+	{ title: 'Confirm multi-timeframe confluence', copy: 'M5, M15, and H1 sit in one row. You can see disagreement before you enter.' },
+	{ title: 'Filter out sideways markets', copy: 'STANDBY and a weak FORCE reading are the panel’s way of saying the session is not trending.' },
+	{ title: 'Catch the start of the daily trend', copy: 'Use H1 as the intraday bias and M15 as the entry, not the other way around.' },
+];
+
+const faqs = [
+	{
+		q: 'Which Goldeneye cells matter for a day trade?',
+		a: 'Start with M15 and H1. Check M5 for the entry push and H4 so you are not fading the larger intraday swing. The daily cell is the backdrop, not the trigger.',
+	},
+	{
+		q: 'Will this stop London and New York fakeouts?',
+		a: 'No tool deletes fakeouts. The dashboard shows when the lower timeframes disagree with H1. That is a reason to wait. It is not a promise that the next breakout holds.',
+	},
+	{
+		q: 'What does FORCE in the same direction mean?',
+		a: 'FORCE is the strength meter. If the timeframes you care about are pointing the same way and FORCE is elevated, the seller treats that as higher-quality momentum. It is a filter. It is not a measured win rate.',
+	},
+	{
+		q: 'Do I still need a session plan?',
+		a: 'Yes. The panel does not know your stop, your news calendar, or the spread at the London open. Use it to choose direction. Keep your own risk rules.',
+	},
+];
+
+const schema = {
+	'@context': 'https://schema.org',
+	'@type': 'FAQPage',
+	mainEntity: faqs.map((faq) => ({
+		'@type': 'Question',
+		name: faq.q,
+		acceptedAnswer: { '@type': 'Answer', text: faq.a },
+	})),
+};
+---
+
+<BaseLayout title={title} description={description} canonicalURL={canonicalURL} schema={schema}>
+	<div class="landing">
+		<section class="hero">
+			<div class="container crumbs">
+				<Breadcrumbs
+					items={[
+						{ label: 'Home', href: '/' },
+						{ label: 'For day traders', href: '/profit-goldeneye-for-day-traders' },
+					]}
+				/>
+			</div>
+			<div class="container hero-grid">
+				<div class="hero-copy">
+					<p class="kicker">M15 and H1</p>
+					<h1>Goldeneye 2.0 for Day Traders: Master the Intraday Trend</h1>
+					<p class="lede">
+						London and New York are full of breaks that fail. Goldeneye keeps M15 and H1 on the same
+						panel so you can see when the lower chart is already fighting the intraday bias.
+					</p>
+					<CtaButton class="btn-lg">Get Goldeneye 2.0 for day trades →</CtaButton>
+					<p class="crosslinks">
+						<a href="/">Read the <strong>Goldeneye 2.0 Review</strong> →</a>
+						<a href="/profit-goldeneye-pricing">See <strong>Pricing</strong> →</a>
+						<a href="/profit-goldeneye-bonus">Claim the <strong>Bonuses</strong> →</a>
+					</p>
+				</div>
+				<figure class="shot">
+					<img
+						src="/images/nine-timeframes.webp"
+						width="2482"
+						height="1448"
+						alt="Goldeneye 2.0 panel on an EURUSD H1 chart with all nine timeframes and an Excellent Buy grade"
+					/>
+					<figcaption>Seller screenshot of the panel on EURUSD H1. Marks on the chart are illustrative.</figcaption>
+				</figure>
+			</div>
+		</section>
+
+		<section class="band">
+			<div class="container narrow">
+				<h2>The day trader's problem</h2>
+				<div class="problem">
+					<p>
+						You enter a trade based on the H1 chart, but the M15 is going against you. Or you get stopped
+						out by a fakeout.
+					</p>
+					<p class="highlight">
+						The session does not care that your H1 idea was neat. If M15 is already pointing the other way,
+						the stop is usually the next thing that happens.
+					</p>
+				</div>
+				<div class="cta-row">
+					<CtaButton class="btn-lg">See M15 and H1 together →</CtaButton>
+				</div>
+			</div>
+		</section>
+
+		<section class="band band-alt">
+			<div class="container">
+				<h2>How the 9-timeframe row shows confluence</h2>
+				<p class="section-lead">
+					Focus on M15 and H1. If M5, M15, and H1 are aligned and FORCE is strong in that same direction, the
+					panel is showing agreement. That raises the quality of the idea. It does not guarantee the breakout.
+				</p>
+				<div class="meters">
+					<article>
+						<span>M5</span>
+						<h3>The push</h3>
+						<p>The short burst inside the session. Useful for the entry, dangerous as the only bias.</p>
+					</article>
+					<article>
+						<span>M15</span>
+						<h3>The intraday swing</h3>
+						<p>Where fakeouts show up first. If this cell fights H1, wait.</p>
+					</article>
+					<article>
+						<span>H1</span>
+						<h3>The day bias</h3>
+						<p>The direction you want the session to agree with before you risk the daily stop.</p>
+					</article>
+				</div>
+				<div class="split">
+					<figure class="shot">
+						<img
+							src="/images/dashboard.webp"
+							width="1080"
+							height="1256"
+							alt="Goldeneye dashboard showing M1 through monthly cells, FORCE, and an Excellent Buy lamp"
+						/>
+						<figcaption>One row for the session. The active timeframe is highlighted.</figcaption>
+					</figure>
+					<div>
+						<p>
+							Sideways hours show up as mixed arrows and a STANDBY lamp. That is the filter. You do not
+							need another oscillator to tell you the London lunch is dead.
+						</p>
+						<p>
+							Take entries with the H1 bias, not against it. The grade still does not place the stop or
+							know the news at 8:30.
+						</p>
+						<div class="cta-row">
+							<CtaButton class="btn-lg">Get the intraday dashboard →</CtaButton>
+						</div>
+					</div>
+				</div>
+			</div>
+		</section>
+
+		<section class="band">
+			<div class="container">
+				<h2>A day-trade checklist</h2>
+				<ul class="checks">
+					{
+						checks.map((item) => (
+							<li>
+								<svg viewBox="0 0 24 24" aria-hidden="true">
+									<path d="M5 12.5l4.2 4.2L19 7.2" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" />
+								</svg>
+								<div>
+									<strong>{item.title}</strong>
+									<p>{item.copy}</p>
+								</div>
+							</li>
+						))
+					}
+				</ul>
+				<div class="cta-row">
+					<CtaButton class="btn-lg">Get Goldeneye 2.0 for $329 →</CtaButton>
+				</div>
+			</div>
+		</section>
+
+		<section class="band band-alt" id="faq">
+			<div class="container narrow">
+				<h2>Day-trade questions</h2>
+				<div class="faq-list">
+					{
+						faqs.map((faq, index) => (
+							<details name="day-faq" open={index === 0}>
+								<summary>{faq.q}</summary>
+								<p>{faq.a}</p>
+							</details>
+						))
+					}
+				</div>
+				<div class="cta-row">
+					<CtaButton class="btn-lg">Trade the session with a grade →</CtaButton>
+				</div>
+			</div>
+		</section>
+
+		<section class="band">
+			<div class="container final-card">
+				<h2>One panel for the session</h2>
+				<p>
+					Day trading fails when H1 and M15 disagree and you pretend they do not. The dashboard makes that
+					disagreement obvious. You still manage the trade.
+				</p>
+				<CtaButton class="btn-lg">Get Goldeneye 2.0 for day traders →</CtaButton>
+				<p class="crosslinks">
+					<a href="/">Full <strong>review</strong> →</a>
+					<a href="/profit-goldeneye-pricing"><strong>Pricing</strong> →</a>
+					<a href="/profit-goldeneye-bonus"><strong>Bonuses</strong> →</a>
+				</p>
+			</div>
+		</section>
+	</div>
+	<StickyBar />
+</BaseLayout>
