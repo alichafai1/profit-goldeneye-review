@@ -4,7 +4,7 @@ import { defineConfig } from 'astro/config';
 
 // https://astro.build/config
 export default defineConfig({
-	site: 'https://profitgoldeneyereview.com',
+	site: 'https://www.profitgoldeneye.info',
 	trailingSlash: 'never',
 	build: {
 		format: 'directory',
