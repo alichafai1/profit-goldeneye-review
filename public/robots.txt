@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://www.profitgoldeneye.info/sitemap.xml
+Sitemap: https://www.profitgoldeneye.info/sitemap-index.xml
